@@ -214,6 +214,43 @@
             transform: translateY(-2px);
         }
 
+        /* Filter Section Styles */
+        .filter-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-lg);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .filter-toggle-btn {
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .filter-toggle-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .filter-toggle-btn i {
+            transition: transform 0.3s;
+        }
+
+        .filter-toggle-btn.active i.fa-chevron-down {
+            transform: rotate(180deg);
+        }
+
         @media (max-width: 768px) {
             .menu-hero h1 {
                 font-size: 2.5rem;
@@ -225,6 +262,21 @@
 
             .menu-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .filter-toggle-btn {
+                display: flex !important;
+            }
+
+            .filter-content {
+                display: none !important;
+            }
+
+            .filter-content.expanded {
+                display: flex !important;
+                flex-direction: column;
+                gap: var(--spacing-md);
+                margin-top: var(--spacing-md);
             }
         }
     </style>
@@ -327,7 +379,14 @@
     <!-- Filter Section -->
     <section style="background: var(--bg-secondary); padding: var(--spacing-xl) 0; position: sticky; top: 80px; z-index: 100; box-shadow: var(--shadow-md);">
         <div class="container">
-            <div style="display: flex; flex-wrap: wrap; gap: var(--spacing-lg); justify-content: center; align-items: center;">
+            <!-- Mobile Filter Toggle Button -->
+            <button class="filter-toggle-btn" id="filterToggleBtn" onclick="toggleFilters()">
+                <span><i class="fas fa-filter"></i> Filter Menu</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+
+            <!-- Filter Content -->
+            <div class="filter-content" id="filterContent">
                 <div style="display: flex; gap: var(--spacing-sm); flex-wrap: wrap;">
                     <span style="font-weight: 700; color: var(--text-primary); display: flex; align-items: center;">
                         <i class="fas fa-filter" style="margin-right: var(--spacing-xs);"></i> Filter by:
@@ -1007,6 +1066,15 @@
     <script src="js/main.js"></script>
     <script src="js/rtl-toggle.js"></script>
     <script>
+        // Toggle filter section on mobile
+        function toggleFilters() {
+            const filterContent = document.getElementById('filterContent');
+            const toggleBtn = document.getElementById('filterToggleBtn');
+            
+            filterContent.classList.toggle('expanded');
+            toggleBtn.classList.toggle('active');
+        }
+
         function addToCart(itemName, price) {
             if (window.TasteIT && window.TasteIT.showToast) {
                 window.TasteIT.showToast(`Added ${itemName} ($${price}) to cart!`, 'success');
