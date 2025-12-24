@@ -453,6 +453,7 @@ img {
   display: flex;
   gap: var(--spacing-lg);
   list-style: none;
+  align-items: center;
 }
 
 .navbar-link {
@@ -482,6 +483,8 @@ img {
 /* Dropdown Menus */
 .dropdown {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .dropdown-toggle {

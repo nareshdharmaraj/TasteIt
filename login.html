@@ -146,6 +146,11 @@
             font-size: 1.1rem;
         }
 
+        /* Mobile Header Container */
+        .mobile-auth-header {
+            display: none;
+        }
+
         .form-group {
             margin-bottom: var(--spacing-lg);
         }
@@ -298,14 +303,16 @@
         }
 
         .social-login {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
             gap: var(--spacing-md);
+            justify-content: center;
             margin-bottom: var(--spacing-xl);
         }
 
         .social-btn {
-            padding: var(--spacing-md);
+            width: 50px;
+            height: 50px;
+            padding: 0;
             border: 2px solid var(--border-color);
             border-radius: var(--radius-lg);
             background: var(--bg-primary);
@@ -388,6 +395,11 @@
             z-index: 10;
         }
 
+        [dir="rtl"] .theme-toggle-auth {
+            left: auto;
+            right: var(--spacing-lg);
+        }
+
         .theme-toggle-slider-auth {
             position: absolute;
             top: 3px;
@@ -403,6 +415,45 @@
             transform: translateX(24px);
         }
 
+        /* RTL Toggle */
+        .rtl-toggle-auth {
+            position: absolute;
+            top: var(--spacing-lg);
+            left: 80px;
+            background: transparent;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-full);
+            padding: 0.5rem;
+            cursor: pointer;
+            z-index: 10;
+            color: var(--text-primary);
+        }
+
+        [dir="rtl"] .rtl-toggle-auth {
+            left: auto;
+            right: 80px;
+        }
+
+        /* RTL Support */
+        [dir="rtl"] .form-input {
+            padding: var(--spacing-md) 3rem var(--spacing-md) var(--spacing-md);
+        }
+
+        [dir="rtl"] .form-icon {
+            left: auto;
+            right: 1rem;
+        }
+
+        [dir="rtl"] .password-toggle {
+            right: auto;
+            left: 1rem;
+        }
+
+        [dir="rtl"] .back-home {
+            right: auto;
+            left: var(--spacing-lg);
+        }
+
         /* Responsive */
         @media (max-width: 968px) {
             .auth-visual {
@@ -411,20 +462,174 @@
 
             .auth-form-container {
                 flex: 1;
+                padding: var(--spacing-lg);
+                padding-top: 65px;
+            }
+
+            .mobile-auth-header {
+                display: block;
+                position: fixed;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: var(--bg-primary);
+                padding: var(--spacing-sm) var(--spacing-md);
+                border-bottom: 1px solid var(--border-color);
+                z-index: 5;
+            }
+
+            [dir="rtl"] .mobile-auth-header {
+                left: 0;
+                right: 0;
+            }
+
+            .mobile-auth-header h2 {
+                font-size: clamp(1.25rem, 4vw, 1.75rem);
+                margin: 0;
+                color: var(--text-primary);
+            }
+
+            .mobile-auth-header p {
+                font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+                color: var(--text-secondary);
+                margin: 0.25rem 0 0 0;
+            }
+
+            .auth-header {
+                display: none;
+            }
+
+            .auth-form-wrapper {
+                margin-top: 100px;
+            }
+
+            .theme-toggle-auth {
+                top: 15px;
+                left: 15px;
+            }
+
+            [dir="rtl"] .theme-toggle-auth {
+                left: auto;
+                right: 15px;
+            }
+
+            .rtl-toggle-auth {
+                top: 15px;
+                left: 70px;
+            }
+
+            [dir="rtl"] .rtl-toggle-auth {
+                left: auto;
+                right: 70px;
+            }
+
+            .back-home {
+                top: 15px;
+                right: 15px;
+                font-size: clamp(0.75rem, 2vw, 0.9rem);
+            }
+
+            .back-home span {
+                display: inline;
+            }
+
+            [dir="rtl"] .back-home {
+                right: auto;
+                left: 15px;
             }
         }
 
         @media (max-width: 480px) {
             .auth-form-container {
-                padding: var(--spacing-lg);
+                padding: var(--spacing-sm);
+                padding-top: 60px;
+                overflow-y: auto;
             }
 
-            .auth-header h2 {
-                font-size: 2rem;
+            .auth-form-wrapper {
+                max-width: 100%;
+                padding: 0;
+                margin-top: 85px;
+            }
+
+            .mobile-auth-header {
+                top: 55px;
+                padding: var(--spacing-xs) var(--spacing-sm);
+                text-align: center;
+            }
+
+            .mobile-auth-header h2 {
+                font-size: clamp(1.1rem, 5vw, 1.4rem);
+            }
+
+            .mobile-auth-header p {
+                font-size: clamp(0.75rem, 3vw, 0.85rem);
+            }
+
+            .social-login {
+                gap: var(--spacing-sm);
+                margin-bottom: var(--spacing-md);
+            }
+
+            .social-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+
+            .divider {
+                margin: var(--spacing-md) 0;
+            }
+
+            .divider span {
+                font-size: 0.85rem;
             }
 
             .social-login {
                 grid-template-columns: 1fr;
+            }
+
+            .form-input {
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+
+            .theme-toggle-auth {
+                width: 44px;
+                height: 24px;
+                top: 16px;
+                left: 16px;
+            }
+
+            [dir="rtl"] .theme-toggle-auth {
+                left: auto;
+                right: 16px;
+            }
+
+            .theme-toggle-slider-auth {
+                width: 18px;
+                height: 18px;
+            }
+
+            .rtl-toggle-auth {
+                padding: 0.4rem;
+                top: 16px;
+                left: 70px;
+            }
+
+            [dir="rtl"] .rtl-toggle-auth {
+                left: auto;
+                right: 70px;
+            }
+
+            .back-home {
+                top: 16px;
+                right: 16px;
+                font-size: 0.875rem;
+            }
+
+            [dir="rtl"] .back-home {
+                right: auto;
+                left: 16px;
             }
         }
 
@@ -490,10 +695,20 @@
                 <span class="theme-toggle-slider-auth"></span>
             </button>
 
+            <button id="rtlToggle" class="rtl-toggle-auth" aria-label="Toggle RTL">
+                <i class="fas fa-align-left"></i>
+            </button>
+
             <a href="index.html" class="back-home">
                 <i class="fas fa-arrow-left"></i>
                 <span>Back to Home</span>
             </a>
+
+            <!-- Mobile Header Container -->
+            <div class="mobile-auth-header">
+                <h2>Welcome Back!</h2>
+                <p>Login to access your account</p>
+            </div>
 
             <div class="auth-form-wrapper">
                 <div class="auth-header">
@@ -577,6 +792,34 @@
                 passwordIcon.classList.add('fa-eye');
             }
         }
+
+        // Theme Toggle
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        // RTL Toggle
+        document.getElementById('rtlToggle').addEventListener('click', () => {
+            const html = document.documentElement;
+            const currentDir = html.getAttribute('dir');
+            html.setAttribute('dir', currentDir === 'rtl' ? 'ltr' : 'rtl');
+            localStorage.setItem('direction', currentDir === 'rtl' ? 'ltr' : 'rtl');
+        });
+
+        // Load saved preferences
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            const savedDirection = localStorage.getItem('direction');
+            
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark');
+            }
+            
+            if (savedDirection === 'rtl') {
+                document.documentElement.setAttribute('dir', 'rtl');
+            }
+        });
 
         // Form Submission
         document.getElementById('loginForm').addEventListener('submit', async (e) => {

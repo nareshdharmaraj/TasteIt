@@ -21,6 +21,16 @@
             display: flex;
             height: 100vh;
             position: relative;
+            overflow: hidden;
+        }
+
+        /* RTL Support for container */
+        [dir="rtl"] .auth-form-container {
+            order: 2;
+        }
+
+        [dir="rtl"] .auth-visual {
+            order: 1;
         }
 
         /* Right Side - Image/Branding (Flipped from login) */
@@ -151,6 +161,11 @@
             font-size: 1.1rem;
         }
 
+        /* Mobile Header Container */
+        .mobile-auth-header {
+            display: none;
+        }
+
         /* Progress Steps */
         .progress-steps {
             display: flex;
@@ -254,6 +269,26 @@
             transition: all var(--transition-base);
             background: var(--bg-primary);
             color: var(--text-primary);
+        }
+
+        /* RTL Support */
+        [dir="rtl"] .form-input {
+            padding: var(--spacing-md) 3rem var(--spacing-md) var(--spacing-md);
+        }
+
+        [dir="rtl"] .form-icon {
+            left: auto;
+            right: 1rem;
+        }
+
+        [dir="rtl"] .password-toggle {
+            right: auto;
+            left: 1rem;
+        }
+
+        [dir="rtl"] .back-home {
+            left: auto;
+            right: var(--spacing-lg);
         }
 
         .form-input:focus {
@@ -386,14 +421,16 @@
         }
 
         .social-login {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
             gap: var(--spacing-md);
+            justify-content: center;
             margin-bottom: var(--spacing-xl);
         }
 
         .social-btn {
-            padding: var(--spacing-md);
+            width: 50px;
+            height: 50px;
+            padding: 0;
             border: 2px solid var(--border-color);
             border-radius: var(--radius-lg);
             background: var(--bg-primary);
@@ -472,7 +509,12 @@
             border-radius: 13px;
             border: none;
             cursor: pointer;
-            position: relative;
+            z-index: 10;
+        }
+
+        [dir="rtl"] .theme-toggle-auth {
+            right: auto;
+            left: var(--spacing-lg);
         }
 
         .theme-toggle-slider-auth {
@@ -488,6 +530,25 @@
 
         .dark .theme-toggle-slider-auth {
             transform: translateX(24px);
+        }
+
+        /* RTL Toggle */
+        .rtl-toggle-auth {
+            position: absolute;
+            top: var(--spacing-lg);
+            right: 70px;
+            background: transparent;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-full);
+            padding: 0.5rem;
+            cursor: pointer;
+            z-index: 10;
+            color: var(--text-primary);
+        }
+
+        [dir="rtl"] .rtl-toggle-auth {
+            right: auto;
+            left: 70px;
         }
 
         /* Password Strength */
@@ -528,6 +589,72 @@
 
             .auth-form-container {
                 flex: 1;
+                padding: var(--spacing-lg);
+                padding-top: 65px;
+            }
+
+            .mobile-auth-header {
+                display: block;
+                position: fixed;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: var(--bg-primary);
+                padding: var(--spacing-sm) var(--spacing-md);
+                border-bottom: 1px solid var(--border-color);
+                z-index: 5;
+                text-align: center;
+            }
+
+            .mobile-auth-header h2 {
+                font-size: clamp(1.25rem, 4vw, 1.75rem);
+                margin: 0;
+                color: var(--text-primary);
+            }
+
+            .mobile-auth-header p {
+                font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+                color: var(--text-secondary);
+                margin: 0.25rem 0 0 0;
+            }
+
+            .auth-header {
+                display: none;
+            }
+
+            .auth-form-wrapper {
+                margin-top: 90px;
+            }
+
+            .back-home {
+                top: 15px;
+                left: 15px;
+                font-size: clamp(0.75rem, 2vw, 0.9rem);
+            }
+
+            [dir="rtl"] .back-home {
+                left: auto;
+                right: 15px;
+            }
+
+            .theme-toggle-auth {
+                top: 15px;
+                right: 15px;
+            }
+
+            [dir="rtl"] .theme-toggle-auth {
+                right: auto;
+                left: 15px;
+            }
+
+            .rtl-toggle-auth {
+                top: 15px;
+                right: 70px;
+            }
+
+            [dir="rtl"] .rtl-toggle-auth {
+                right: auto;
+                left: 70px;
             }
 
             .auth-benefits {
@@ -537,7 +664,63 @@
 
         @media (max-width: 480px) {
             .auth-form-container {
-                padding: var(--spacing-lg);
+                padding: var(--spacing-sm);
+                padding-top: 60px;
+            }
+
+            .auth-form-wrapper {
+                margin-top: 85px;
+            }
+
+            .mobile-auth-header {
+                top: 55px;
+                padding: var(--spacing-xs) var(--spacing-sm);
+            }
+
+            .mobile-auth-header h2 {
+                font-size: clamp(1.1rem, 5vw, 1.4rem);
+            }
+
+            .mobile-auth-header p {
+                font-size: clamp(0.75rem, 3vw, 0.85rem);
+            }
+
+            .back-home {
+                top: 16px;
+                left: 16px;
+            }
+
+            [dir="rtl"] .back-home {
+                left: auto;
+                right: 16px;
+            }
+
+            .theme-toggle-auth {
+                top: 16px;
+                right: 16px;
+                width: 44px;
+                height: 24px;
+            }
+
+            [dir="rtl"] .theme-toggle-auth {
+                right: auto;
+                left: 16px;
+            }
+
+            .theme-toggle-slider-auth {
+                width: 18px;
+                height: 18px;
+            }
+
+            .rtl-toggle-auth {
+                top: 16px;
+                right: 70px;
+                padding: 0.4rem;
+            }
+
+            [dir="rtl"] .rtl-toggle-auth {
+                right: auto;
+                left: 70px;
             }
 
             .auth-header h2 {
@@ -549,11 +732,27 @@
             }
 
             .social-login {
-                grid-template-columns: 1fr;
+                gap: var(--spacing-sm);
+                margin-bottom: var(--spacing-md);
+            }
+
+            .social-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+
+            .divider {
+                margin: var(--spacing-md) 0;
+            }
+
+            .divider span {
+                font-size: 0.85rem;
             }
 
             .progress-steps {
                 font-size: 0.75rem;
+                margin-bottom: var(--spacing-lg);
             }
 
             .step-circle {
@@ -577,6 +776,16 @@
             <button id="themeToggle" class="theme-toggle-auth" aria-label="Toggle theme">
                 <span class="theme-toggle-slider-auth"></span>
             </button>
+
+            <button id="rtlToggle" class="rtl-toggle-auth" aria-label="Toggle RTL">
+                <i class="fas fa-align-left"></i>
+            </button>
+
+            <!-- Mobile Header Container -->
+            <div class="mobile-auth-header">
+                <h2>Create Account</h2>
+                <p>Join TasteIT and start your culinary journey</p>
+            </div>
 
             <div class="auth-form-wrapper">
                 <div class="auth-header">
@@ -793,6 +1002,34 @@
     <script src="js/main.js"></script>
 
     <script>
+        // Theme Toggle
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        // RTL Toggle
+        document.getElementById('rtlToggle').addEventListener('click', () => {
+            const html = document.documentElement;
+            const currentDir = html.getAttribute('dir');
+            html.setAttribute('dir', currentDir === 'rtl' ? 'ltr' : 'rtl');
+            localStorage.setItem('direction', currentDir === 'rtl' ? 'ltr' : 'rtl');
+        });
+
+        // Load saved preferences
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            const savedDirection = localStorage.getItem('direction');
+            
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark');
+            }
+            
+            if (savedDirection === 'rtl') {
+                document.documentElement.setAttribute('dir', 'rtl');
+            }
+        });
+
         let currentStep = 1;
         const totalSteps = 3;
 

@@ -159,16 +159,22 @@ function initScrollReveal() {
 
 // Counter Animation
 function animateCounter(element, target, duration = 2000) {
+    const prefix = element.getAttribute('data-prefix') || '';
+    const suffix = element.getAttribute('data-suffix') || '';
+    const decimals = parseInt(element.getAttribute('data-decimals')) || 0;
+    
     let start = 0;
     const increment = target / (duration / 16); // 60fps
 
     const updateCounter = () => {
         start += increment;
         if (start < target) {
-            element.textContent = Math.floor(start);
+            const value = decimals > 0 ? start.toFixed(decimals) : Math.floor(start).toLocaleString();
+            element.textContent = prefix + value + suffix;
             requestAnimationFrame(updateCounter);
         } else {
-            element.textContent = target;
+            const value = decimals > 0 ? target.toFixed(decimals) : Math.floor(target).toLocaleString();
+            element.textContent = prefix + value + suffix;
         }
     };
 
@@ -186,7 +192,8 @@ function initCounters() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-                const target = parseInt(entry.target.getAttribute('data-counter'));
+                const targetValue = entry.target.getAttribute('data-counter');
+                const target = parseFloat(targetValue);
                 animateCounter(entry.target, target);
                 entry.target.classList.add('counted');
             }

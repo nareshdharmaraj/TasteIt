@@ -1,70 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - TasteIT</title>
-
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
             background: var(--bg-secondary);
+            font-family: var(--font-body);
+            overflow-x: hidden;
         }
 
-        .dashboard-container {
-            display: grid;
-            grid-template-columns: 250px 1fr;
+        .dashboard-wrapper {
+            display: flex;
             min-height: 100vh;
         }
 
+        /* Sidebar */
         .sidebar {
+            width: 250px;
             background: linear-gradient(180deg, var(--secondary-color), var(--primary-color));
             color: white;
             padding: var(--spacing-md);
-            position: fixed;
-            width: 250px;
             height: 100vh;
-            overflow-y: auto;
+            position: fixed;
             left: 0;
             top: 0;
+            overflow-y: auto;
             z-index: 1000;
             transition: transform 0.3s ease;
-        }
-
-        [dir="rtl"] .mobile-menu-toggle {
-            left: auto;
-            right: var(--spacing-md);
-        }
-
-        .mobile-menu-toggle {
-            display: none;
-            position: fixed;
-            top: var(--spacing-md);
-            left: var(--spacing-md);
-            z-index: 1001;
-            background: var(--secondary-color);
-            color: white;
-            border: none;
-            padding: var(--spacing-sm) var(--spacing-md);
-            border-radius: var(--radius-md);
-            cursor: pointer;
-            font-size: 1.2rem;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .sidebar-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
         }
 
         [dir="rtl"] .sidebar {
@@ -81,9 +50,18 @@
             gap: var(--spacing-sm);
         }
 
+        .sidebar-label {
+            text-align: center;
+            padding: var(--spacing-sm);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-lg);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
         .sidebar-nav {
             list-style: none;
-            padding: 0;
         }
 
         .sidebar-nav li {
@@ -98,8 +76,7 @@
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             border-radius: var(--radius-lg);
-            transition: all var(--transition-fast);
-            font-size: 0.95rem;
+            transition: all 0.3s;
         }
 
         .sidebar-link:hover,
@@ -108,62 +85,93 @@
             color: white;
         }
 
-        .main-dashboard {
-            margin-left: 250px;
-            padding: var(--spacing-md);
-            width: calc(100% - 250px);
-            min-height: 100vh;
-            max-width: 100%;
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            position: fixed;
+            top: var(--spacing-md);
+            left: var(--spacing-md);
+            z-index: 1001;
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-lg);
         }
 
-        [dir="rtl"] .main-dashboard {
+        [dir="rtl"] .mobile-menu-toggle {
+            left: auto;
+            right: var(--spacing-md);
+        }
+
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: var(--spacing-lg);
+            min-height: 100vh;
+        }
+
+        [dir="rtl"] .main-content {
             margin-left: 0;
             margin-right: 250px;
         }
 
         .dashboard-header {
             background: var(--bg-primary);
-            padding: var(--spacing-md);
+            padding: var(--spacing-lg);
             border-radius: var(--radius-lg);
-            margin-bottom: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
             box-shadow: var(--shadow-lg);
         }
 
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        /* Stats */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: var(--spacing-sm);
-            margin-bottom: var(--spacing-md);
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
         }
 
-        .chart-card h3,
-        .chart-card h4,
-        .chart-card h5 {
-            line-height: 1.3;
-        }
-
-        .chart-card p {
-            line-height: 1.5;
-        }
-
-        @media (max-width: 1200px) {
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        @media (min-width: 1400px) {
+            .stats-grid { grid-template-columns: repeat(4, 1fr); }
         }
 
         .stat-card {
             background: var(--bg-primary);
-            padding: var(--spacing-md);
+            padding: var(--spacing-lg);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
-            transition: all var(--transition-base);
-            width: fit-content;
+            transition: transform 0.3s;
         }
 
         .stat-card:hover {
             transform: translateY(-4px);
-            box-shadow: var(--shadow-2xl);
+            box-shadow: var(--shadow-xl);
         }
 
         .stat-icon {
@@ -180,66 +188,57 @@
         .stat-value {
             font-size: 1.5rem;
             font-weight: 800;
-            margin-bottom: 0;
         }
 
+        /* Charts */
         .charts-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--spacing-sm);
-            margin-bottom: var(--spacing-md);
-        }
-
-        @media (max-width: 1024px) {
-            .charts-grid {
-                grid-template-columns: 1fr;
-            }
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
         }
 
         .chart-card {
             background: var(--bg-primary);
-            padding: var(--spacing-md);
+            padding: var(--spacing-lg);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
-            height: 100%;
         }
 
-        .table-container {
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+
+        /* Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .content-card {
             background: var(--bg-primary);
-            padding: var(--spacing-md);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .table-card {
+            background: var(--bg-primary);
+            padding: var(--spacing-lg);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
             overflow-x: auto;
-            width: 100%;
-            margin-left: calc(-1 * var(--spacing-md));
-            margin-right: calc(-1 * var(--spacing-md));
-            width: calc(100% + 2 * var(--spacing-md));
-            max-width: calc(100% + 2 * var(--spacing-md));
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 600px;
         }
 
-        @media (min-width: 1024px) {
-            table {
-                min-width: 100%;
-                font-size: 1rem;
-            }
-            
-            .table-container {
-                margin-left: 0;
-                margin-right: 0;
-                width: 100%;
-                max-width: 100%;
-            }
-        }
-
-        th,
-        td {
-            padding: var(--spacing-sm) var(--spacing-md);
+        th, td {
+            padding: var(--spacing-md);
             text-align: left;
             border-bottom: 1px solid var(--border-color);
         }
@@ -254,13 +253,23 @@
             color: var(--text-secondary);
         }
 
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
         @media (max-width: 768px) {
-            .dashboard-container {
-                grid-template-columns: 1fr;
+            .sidebar {
+                position: fixed;
+                left: 0;
+                width: 250px;
+                transform: translateX(-100%);
             }
 
-            .sidebar {
-                transform: translateX(-100%);
+            [dir="rtl"] .sidebar {
+                left: auto;
+                right: 0;
+                transform: translateX(100%);
             }
 
             .sidebar.active {
@@ -275,7 +284,7 @@
                 display: block;
             }
 
-            .main-dashboard {
+            .main-content {
                 margin-left: 0;
                 margin-right: 0;
                 width: 100%;
@@ -283,102 +292,90 @@
                 padding-top: 60px;
             }
 
-            .stats-grid {
+            .stats-grid,
+            .charts-grid,
+            .content-grid {
                 grid-template-columns: 1fr;
             }
 
-            .charts-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .dashboard-header > div {
+            .header-content {
                 flex-direction: column;
-                align-items: flex-start !important;
+                align-items: flex-start;
             }
 
-            .dashboard-header > div > div:last-child {
+            .header-actions {
                 width: 100%;
                 justify-content: flex-start;
+            }
+
+            .dashboard-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .table-card {
+                overflow-x: auto;
             }
         }
     </style>
 </head>
-
 <body>
-    <!-- Mobile Menu Toggle -->
     <button class="mobile-menu-toggle" id="mobileMenuToggle">
         <i class="fas fa-bars"></i>
     </button>
-
-    <!-- Sidebar Overlay -->
+    
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-    <div class="dashboard-container">
-        <!-- Sidebar -->
+    
+    <div class="dashboard-wrapper">
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-brand">
-                <i class="fas fa-utensils"></i>
-                TasteIT
+                <i class="fas fa-utensils"></i> TasteIT
             </div>
-            <div style="text-align: center; padding: var(--spacing-sm) var(--spacing-md); background: rgba(255, 255, 255, 0.1); border-radius: var(--radius-md); margin-bottom: var(--spacing-lg); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px;">
-                ADMIN PAGE
-            </div>
-
+            <div class="sidebar-label">ADMIN DASHBOARD</div>
             <ul class="sidebar-nav">
-                <li><a href="#" class="sidebar-link active"><i class="fas fa-chart-line"></i> Dashboard</a></li>
-                <li><a href="#" class="sidebar-link"><i class="fas fa-shopping-bag"></i> Orders</a></li>
-                <li><a href="menu.html" class="sidebar-link"><i class="fas fa-utensils"></i> Menu</a></li>
+                <li><a href="#" class="sidebar-link active"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="menu.html" class="sidebar-link"><i class="fas fa-utensils"></i> Menu Management</a></li>
+                <li><a href="order.html" class="sidebar-link"><i class="fas fa-shopping-cart"></i> Orders</a></li>
                 <li><a href="#" class="sidebar-link"><i class="fas fa-users"></i> Customers</a></li>
                 <li><a href="#" class="sidebar-link"><i class="fas fa-chart-bar"></i> Analytics</a></li>
-                <li><a href="#" class="sidebar-link"><i class="fas fa-dollar-sign"></i> Revenue</a></li>
-                <li><a href="#" class="sidebar-link"><i class="fas fa-star"></i> Reviews</a></li>
                 <li><a href="#" class="sidebar-link"><i class="fas fa-cog"></i> Settings</a></li>
-                <li style="margin-top: var(--spacing-2xl);"><a href="user-dashboard.html" class="sidebar-link"><i
-                            class="fas fa-user"></i> User View</a></li>
+                <li style="margin-top: auto; padding-top: var(--spacing-lg); border-top: 1px solid rgba(255,255,255,0.1);">
+                    <a href="user-dashboard.html" class="sidebar-link"><i class="fas fa-user"></i> User View</a>
+                </li>
                 <li><a href="index.html" class="sidebar-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
             </ul>
         </aside>
 
-        <!-- Main Content -->
-        <main class="main-dashboard">
-            <!-- Header -->
+        <main class="main-content">
             <div class="dashboard-header">
-                <div
-                    style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--spacing-md);">
+                <div class="header-content">
                     <div>
                         <h1 style="margin-bottom: var(--spacing-xs);">Admin Dashboard</h1>
                         <p style="color: var(--text-secondary); margin: 0;">Manage your restaurant operations</p>
                     </div>
-                    <div style="display: flex; gap: var(--spacing-md); align-items: center;">
-                        <button id="themeToggle" class="btn btn-outline">
-                            <i class="fas fa-moon"></i>
-                        </button>
-                        <button id="rtlToggle" class="btn btn-outline">
-                            <i class="fas fa-align-left"></i>
-                        </button>
+                    <div class="header-actions">
+                        <button id="themeToggle" class="btn btn-outline"><i class="fas fa-moon"></i></button>
+                        <button id="rtlToggle" class="btn btn-outline"><i class="fas fa-align-left"></i></button>
                     </div>
                 </div>
             </div>
 
-            <!-- Stats -->
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-icon" style="background: linear-gradient(135deg, #4cc9f0, #4895ef); color: white;">
                         <i class="fas fa-shopping-bag"></i>
                     </div>
-                    <div class="stat-value">156</div>
-                    <div style="color: var(--text-secondary);">Total Orders Today</div>
+                    <div class="stat-value" data-counter="156" data-suffix="+">0</div>
+                    <div style="color: var(--text-secondary);">Orders Today</div>
                     <div style="color: var(--success-color); margin-top: var(--spacing-xs); font-size: 0.875rem;">
-                        <i class="fas fa-arrow-up"></i> 23% from yesterday
+                        <i class="fas fa-arrow-up"></i> 15% from yesterday
                     </div>
                 </div>
 
                 <div class="stat-card">
-                    <div class="stat-icon"
-                        style="background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white;">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white;">
                         <i class="fas fa-dollar-sign"></i>
                     </div>
-                    <div class="stat-value">$4,280</div>
+                    <div class="stat-value" data-counter="4280" data-prefix="$" data-suffix="+">0</div>
                     <div style="color: var(--text-secondary);">Revenue Today</div>
                     <div style="color: var(--success-color); margin-top: var(--spacing-xs); font-size: 0.875rem;">
                         <i class="fas fa-arrow-up"></i> 18% from yesterday
@@ -389,7 +386,7 @@
                     <div class="stat-icon" style="background: linear-gradient(135deg, #27AE60, #2ecc71); color: white;">
                         <i class="fas fa-users"></i>
                     </div>
-                    <div class="stat-value">1,842</div>
+                    <div class="stat-value" data-counter="1842" data-suffix="+">0</div>
                     <div style="color: var(--text-secondary);">Total Customers</div>
                     <div style="color: var(--success-color); margin-top: var(--spacing-xs); font-size: 0.875rem;">
                         <i class="fas fa-arrow-up"></i> 45 new today
@@ -400,7 +397,7 @@
                     <div class="stat-icon" style="background: linear-gradient(135deg, #e63946, #f77f00); color: white;">
                         <i class="fas fa-star"></i>
                     </div>
-                    <div class="stat-value">4.8</div>
+                    <div class="stat-value" data-counter="4.8" data-decimals="1">0</div>
                     <div style="color: var(--text-secondary);">Average Rating</div>
                     <div style="color: var(--text-secondary); margin-top: var(--spacing-xs); font-size: 0.875rem;">
                         Based on 342 reviews
@@ -408,326 +405,302 @@
                 </div>
             </div>
 
-            <!-- Admin Management Grid -->
-            <div class="charts-grid" style="grid-template-columns: repeat(2, 1fr); margin-bottom: var(--spacing-lg);">
-                <!-- Customers Waiting -->
-                <div class="chart-card">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg);">
-                        <h3 style="margin: 0;"><i class="fas fa-clock"></i> Customers Waiting</h3>
-                        <span class="badge" style="background: var(--warning-color); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-weight: 700;">8 Pending</span>
-                    </div>
-                    
-                    <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
-                        <div style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-lg); display: flex; justify-content: space-between; align-items: center;">
-                            <div>
-                                <h5 style="margin: 0; margin-bottom: var(--spacing-xs);">Table #12</h5>
-                                <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">Party of 4 • 15 min wait</p>
-                            </div>
-                            <button class="btn btn-sm" style="background: var(--success-color); color: white; border: none;">Assign</button>
-                        </div>
-                        
-                        <div style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-lg); display: flex; justify-content: space-between; align-items: center;">
-                            <div>
-                                <h5 style="margin: 0; margin-bottom: var(--spacing-xs);">Table #8</h5>
-                                <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">Party of 2 • 8 min wait</p>
-                            </div>
-                            <button class="btn btn-sm" style="background: var(--success-color); color: white; border: none;">Assign</button>
-                        </div>
-                        
-                        <div style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-lg); display: flex; justify-content: space-between; align-items: center;">
-                            <div>
-                                <h5 style="margin: 0; margin-bottom: var(--spacing-xs);">Table #5</h5>
-                                <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">Party of 6 • 22 min wait</p>
-                            </div>
-                            <button class="btn btn-sm" style="background: var(--success-color); color: white; border: none;">Assign</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Free Tables -->
-                <div class="chart-card">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg);">
-                        <h3 style="margin: 0;"><i class="fas fa-chair"></i> Table Availability</h3>
-                        <span class="badge" style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-weight: 700;">12 Free</span>
-                    </div>
-                    
-                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--spacing-sm);">
-                        <div style="background: var(--success-color); color: white; padding: var(--spacing-md); border-radius: var(--radius-lg); text-align: center; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                            <div style="font-size: 1.5rem; margin-bottom: var(--spacing-xs);">1</div>
-                            <div style="font-size: 0.75rem;">2 Seats</div>
-                        </div>
-                        <div style="background: var(--success-color); color: white; padding: var(--spacing-md); border-radius: var(--radius-lg); text-align: center; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                            <div style="font-size: 1.5rem; margin-bottom: var(--spacing-xs);">3</div>
-                            <div style="font-size: 0.75rem;">4 Seats</div>
-                        </div>
-                        <div style="background: var(--danger-color); color: white; padding: var(--spacing-md); border-radius: var(--radius-lg); text-align: center; opacity: 0.7;">
-                            <div style="font-size: 1.5rem; margin-bottom: var(--spacing-xs);">4</div>
-                            <div style="font-size: 0.75rem;">Occupied</div>
-                        </div>
-                        <div style="background: var(--success-color); color: white; padding: var(--spacing-md); border-radius: var(--radius-lg); text-align: center; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                            <div style="font-size: 1.5rem; margin-bottom: var(--spacing-xs);">6</div>
-                            <div style="font-size: 0.75rem;">6 Seats</div>
-                        </div>
-                        <div style="background: var(--danger-color); color: white; padding: var(--spacing-md); border-radius: var(--radius-lg); text-align: center; opacity: 0.7;">
-                            <div style="font-size: 1.5rem; margin-bottom: var(--spacing-xs);">7</div>
-                            <div style="font-size: 0.75rem;">Occupied</div>
-                        </div>
-                        <div style="background: var(--success-color); color: white; padding: var(--spacing-md); border-radius: var(--radius-lg); text-align: center; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                            <div style="font-size: 1.5rem; margin-bottom: var(--spacing-xs);">9</div>
-                            <div style="font-size: 0.75rem;">4 Seats</div>
-                        </div>
-                        <div style="background: var(--success-color); color: white; padding: var(--spacing-md); border-radius: var(--radius-lg); text-align: center; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                            <div style="font-size: 1.5rem; margin-bottom: var(--spacing-xs);">11</div>
-                            <div style="font-size: 0.75rem;">2 Seats</div>
-                        </div>
-                        <div style="background: var(--danger-color); color: white; padding: var(--spacing-md); border-radius: var(--radius-lg); text-align: center; opacity: 0.7;">
-                            <div style="font-size: 1.5rem; margin-bottom: var(--spacing-xs);">13</div>
-                            <div style="font-size: 0.75rem;">Occupied</div>
-                        </div>
-                    </div>
-                    
-                    <div style="display: flex; gap: var(--spacing-lg); margin-top: var(--spacing-lg); padding-top: var(--spacing-lg); border-top: 2px solid var(--border-color);">
-                        <div style="display: flex; align-items: center; gap: var(--spacing-sm);">
-                            <div style="width: 12px; height: 12px; background: var(--success-color); border-radius: 50%;"></div>
-                            <span style="font-size: 0.9rem;">Available (12)</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: var(--spacing-sm);">
-                            <div style="width: 12px; height: 12px; background: var(--danger-color); border-radius: 50%;"></div>
-                            <span style="font-size: 0.9rem;">Occupied (8)</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Today's Revenue & Billing -->
-            <div class="charts-grid" style="grid-template-columns: 1fr 1fr;">
-                <!-- Today's Revenue Breakdown -->
-                <div class="chart-card">
-                    <h3 style="margin-bottom: var(--spacing-lg);"><i class="fas fa-chart-line"></i> Today's Revenue Breakdown</h3>
-                    
-                    <div style="background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white; padding: var(--spacing-xl); border-radius: var(--radius-lg); margin-bottom: var(--spacing-lg); text-align: center;">
-                        <div style="font-size: 0.9rem; opacity: 0.9; margin-bottom: var(--spacing-xs);">Total Revenue Today</div>
-                        <div style="font-size: 3rem; font-weight: 800; margin-bottom: var(--spacing-sm);">$4,280</div>
-                        <div style="font-size: 0.9rem; opacity: 0.9;">156 Orders • Avg: $27.44</div>
-                    </div>
-                    
-                    <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md); background: var(--bg-secondary); border-radius: var(--radius-lg);">
-                            <div style="display: flex; align-items: center; gap: var(--spacing-md);">
-                                <div style="width: 40px; height: 40px; background: #4cc9f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
-                                    <i class="fas fa-utensils"></i>
-                                </div>
-                                <div>
-                                    <div style="font-weight: 600;">Dine-in</div>
-                                    <div style="font-size: 0.85rem; color: var(--text-secondary);">78 orders</div>
-                                </div>
-                            </div>
-                            <div style="text-align: right;">
-                                <div style="font-weight: 700; font-size: 1.2rem; color: var(--primary-color);">$2,140</div>
-                                <div style="font-size: 0.85rem; color: var(--success-color);">50%</div>
-                            </div>
-                        </div>
-                        
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md); background: var(--bg-secondary); border-radius: var(--radius-lg);">
-                            <div style="display: flex; align-items: center; gap: var(--spacing-md);">
-                                <div style="width: 40px; height: 40px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
-                                    <i class="fas fa-shopping-bag"></i>
-                                </div>
-                                <div>
-                                    <div style="font-weight: 600;">Takeaway</div>
-                                    <div style="font-size: 0.85rem; color: var(--text-secondary);">52 orders</div>
-                                </div>
-                            </div>
-                            <div style="text-align: right;">
-                                <div style="font-weight: 700; font-size: 1.2rem; color: var(--primary-color);">$1,498</div>
-                                <div style="font-size: 0.85rem; color: var(--success-color);">35%</div>
-                            </div>
-                        </div>
-                        
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md); background: var(--bg-secondary); border-radius: var(--radius-lg);">
-                            <div style="display: flex; align-items: center; gap: var(--spacing-md);">
-                                <div style="width: 40px; height: 40px; background: #27AE60; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
-                                    <i class="fas fa-motorcycle"></i>
-                                </div>
-                                <div>
-                                    <div style="font-weight: 600;">Delivery</div>
-                                    <div style="font-size: 0.85rem; color: var(--text-secondary);">26 orders</div>
-                                </div>
-                            </div>
-                            <div style="text-align: right;">
-                                <div style="font-weight: 700; font-size: 1.2rem; color: var(--primary-color);">$642</div>
-                                <div style="font-size: 0.85rem; color: var(--success-color);">15%</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Billing Management -->
-                <div class="chart-card">
-                    <h3 style="margin-bottom: var(--spacing-lg);"><i class="fas fa-file-invoice-dollar"></i> Active Bills</h3>
-                    
-                    <div style="display: flex; flex-direction: column; gap: var(--spacing-md); max-height: 400px; overflow-y: auto;">
-                        <div style="background: var(--bg-secondary); padding: var(--spacing-lg); border-radius: var(--radius-lg); border-left: 4px solid var(--warning-color);">
-                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: var(--spacing-md);">
-                                <div>
-                                    <h4 style="margin: 0; margin-bottom: var(--spacing-xs);">Table #4</h4>
-                                    <p style="margin: 0; font-size: 0.85rem; color: var(--text-secondary);">Started: 7:45 PM • Duration: 1hr 15min</p>
-                                </div>
-                                <span class="badge" style="background: var(--warning-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.8rem;">Unpaid</span>
-                            </div>
-                            <div style="margin-bottom: var(--spacing-md);">
-                                <div style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: var(--spacing-xs);">
-                                    <span>2x Butter Chicken</span>
-                                    <span>$34.00</span>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: var(--spacing-xs);">
-                                    <span>3x Naan Bread</span>
-                                    <span>$9.00</span>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
-                                    <span>2x Mango Lassi</span>
-                                    <span>$12.00</span>
-                                </div>
-                            </div>
-                            <div style="border-top: 2px solid var(--border-color); padding-top: var(--spacing-md); display: flex; justify-content: space-between; align-items: center;">
-                                <div style="font-size: 1.3rem; font-weight: 700; color: var(--primary-color);">$55.00</div>
-                                <button class="btn btn-sm" style="background: var(--success-color); color: white; border: none; padding: var(--spacing-sm) var(--spacing-lg);">Generate Bill</button>
-                            </div>
-                        </div>
-                        
-                        <div style="background: var(--bg-secondary); padding: var(--spacing-lg); border-radius: var(--radius-lg); border-left: 4px solid var(--warning-color);">
-                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: var(--spacing-md);">
-                                <div>
-                                    <h4 style="margin: 0; margin-bottom: var(--spacing-xs);">Table #7</h4>
-                                    <p style="margin: 0; font-size: 0.85rem; color: var(--text-secondary);">Started: 8:15 PM • Duration: 45min</p>
-                                </div>
-                                <span class="badge" style="background: var(--warning-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.8rem;">Unpaid</span>
-                            </div>
-                            <div style="margin-bottom: var(--spacing-md);">
-                                <div style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: var(--spacing-xs);">
-                                    <span>1x Wagyu Steak</span>
-                                    <span>$65.00</span>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: var(--spacing-xs);">
-                                    <span>1x Caesar Salad</span>
-                                    <span>$12.00</span>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
-                                    <span>2x Red Wine</span>
-                                    <span>$28.00</span>
-                                </div>
-                            </div>
-                            <div style="border-top: 2px solid var(--border-color); padding-top: var(--spacing-md); display: flex; justify-content: space-between; align-items: center;">
-                                <div style="font-size: 1.3rem; font-weight: 700; color: var(--primary-color);">$105.00</div>
-                                <button class="btn btn-sm" style="background: var(--success-color); color: white; border: none; padding: var(--spacing-sm) var(--spacing-lg);">Generate Bill</button>
-                            </div>
-                        </div>
-                        
-                        <div style="background: var(--bg-secondary); padding: var(--spacing-lg); border-radius: var(--radius-lg); border-left: 4px solid var(--success-color);">
-                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: var(--spacing-md);">
-                                <div>
-                                    <h4 style="margin: 0; margin-bottom: var(--spacing-xs);">Table #13</h4>
-                                    <p style="margin: 0; font-size: 0.85rem; color: var(--text-secondary);">Completed: 7:30 PM</p>
-                                </div>
-                                <span class="badge" style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.8rem;">Paid</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; align-items: center;">
-                                <div style="font-size: 1.3rem; font-weight: 700; color: var(--success-color);">$78.50</div>
-                                <div style="font-size: 0.85rem; color: var(--text-secondary);">Cash Payment</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Charts -->
             <div class="charts-grid">
                 <div class="chart-card">
-                    <h3 style="margin-bottom: var(--spacing-md); font-size: 1.1rem;">Revenue Overview</h3>
-                    <div style="height: 200px;">
+                    <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-chart-bar"></i> Weekly Revenue</h3>
+                    <div class="chart-container">
                         <canvas id="revenueChart"></canvas>
                     </div>
                 </div>
 
                 <div class="chart-card">
-                    <h3 style="margin-bottom: var(--spacing-md); font-size: 1.1rem;">Popular Dishes</h3>
-                    <div style="height: 200px;">
+                    <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-chart-pie"></i> Popular Dishes</h3>
+                    <div class="chart-container">
                         <canvas id="dishesChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-chart-line"></i> Customer Growth</h3>
+                    <div class="chart-container">
+                        <canvas id="customerGrowthChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-chart-area"></i> Order Trends</h3>
+                    <div class="chart-container">
+                        <canvas id="orderTrendsChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-clock"></i> Peak Hours</h3>
+                    <div class="chart-container">
+                        <canvas id="peakHoursChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-chart-radar"></i> Staff Performance</h3>
+                    <div class="chart-container">
+                        <canvas id="staffPerformanceChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-chart-bar"></i> Monthly Comparison</h3>
+                    <div class="chart-container">
+                        <canvas id="monthlyComparisonChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-percentage"></i> Customer Satisfaction</h3>
+                    <div class="chart-container">
+                        <canvas id="satisfactionChart"></canvas>
                     </div>
                 </div>
             </div>
 
-            <!-- Recent Orders Table -->
-            <div class="table-container" style="margin-top: var(--spacing-md);">
-                <div
-                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-md);">
-                    <h3 style="margin: 0; font-size: 1.3rem;"><i class="fas fa-receipt"></i> Recent Orders</h3>
-                    <button class="btn btn-outline btn-sm">View All</button>
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3 style="margin-bottom: var(--spacing-lg);"><i class="fas fa-clock"></i> Pending Orders</h3>
+                    <div style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md); margin-bottom: var(--spacing-sm);">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <h5 style="margin-bottom: var(--spacing-xs);">Table #12</h5>
+                                <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">Party of 4</p>
+                            </div>
+                            <button class="btn btn-sm btn-primary">Assign</button>
+                        </div>
+                    </div>
+                    <div style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md);">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <h5 style="margin-bottom: var(--spacing-xs);">Table #8</h5>
+                                <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">Party of 2</p>
+                            </div>
+                            <button class="btn btn-sm btn-primary">Assign</button>
+                        </div>
+                    </div>
                 </div>
 
-                <table style="font-size: 0.95rem;">
+                <div class="content-card">
+                    <h3 style="margin-bottom: var(--spacing-lg);"><i class="fas fa-chart-line"></i> Today's Performance</h3>
+                    <div style="margin-bottom: var(--spacing-md);">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-xs);">
+                            <span>Order Completion Rate</span>
+                            <strong>94%</strong>
+                        </div>
+                        <div style="height: 8px; background: var(--bg-secondary); border-radius: var(--radius-full); overflow: hidden;">
+                            <div style="width: 94%; height: 100%; background: var(--success-color);"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-xs);">
+                            <span>Customer Satisfaction</span>
+                            <strong>98%</strong>
+                        </div>
+                        <div style="height: 8px; background: var(--bg-secondary); border-radius: var(--radius-full); overflow: hidden;">
+                            <div style="width: 98%; height: 100%; background: var(--primary-color);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-card">
+                <h3 style="margin-bottom: var(--spacing-lg);"><i class="fas fa-list"></i> Recent Orders</h3>
+                <table>
                     <thead>
                         <tr>
-                            <th style="padding: var(--spacing-md); font-size: 0.9rem;">Order ID</th>
-                            <th style="padding: var(--spacing-md); font-size: 0.9rem;">Customer</th>
-                            <th style="padding: var(--spacing-md); font-size: 0.9rem;">Items</th>
-                            <th style="padding: var(--spacing-md); font-size: 0.9rem;">Amount</th>
-                            <th style="padding: var(--spacing-md); font-size: 0.9rem;">Status</th>
-                            <th style="padding: var(--spacing-md); font-size: 0.9rem;">Time</th>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Items</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Time</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style="background: var(--bg-secondary);">
-                            <td style="padding: var(--spacing-md); font-weight: 600;">#ORD-7842</td>
-                            <td style="padding: var(--spacing-md);">John Doe</td>
-                            <td style="padding: var(--spacing-md);">Butter Chicken, Naan</td>
-                            <td style="padding: var(--spacing-md); font-weight: 700; color: var(--primary-color);">$42.50</td>
-                            <td style="padding: var(--spacing-md);"><span class="badge"
-                                    style="background: var(--warning-color); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 600;">Preparing</span>
-                            </td>
-                            <td style="padding: var(--spacing-md); color: var(--text-secondary);">5 mins ago</td>
+                        <tr>
+                            <td>#ORD-7842</td>
+                            <td>John Doe</td>
+                            <td>Butter Chicken, Naan</td>
+                            <td>$42.50</td>
+                            <td><span class="badge" style="background: var(--warning-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.85rem;">In Progress</span></td>
+                            <td>2:30 PM</td>
                         </tr>
                         <tr>
-                            <td style="padding: var(--spacing-md); font-weight: 600;">#ORD-7841</td>
-                            <td style="padding: var(--spacing-md);">Jane Smith</td>
-                            <td style="padding: var(--spacing-md);">Kung Pao Chicken</td>
-                            <td style="padding: var(--spacing-md); font-weight: 700; color: var(--primary-color);">$28.00</td>
-                            <td style="padding: var(--spacing-md);"><span class="badge"
-                                    style="background: var(--info-color); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 600;">On the Way</span></td>
-                            <td style="padding: var(--spacing-md); color: var(--text-secondary);">12 mins ago</td>
-                        </tr>
-                        <tr style="background: var(--bg-secondary);">
-                            <td style="padding: var(--spacing-md); font-weight: 600;">#ORD-7840</td>
-                            <td style="padding: var(--spacing-md);">Mike Johnson</td>
-                            <td style="padding: var(--spacing-md);">Tandoori Chicken</td>
-                            <td style="padding: var(--spacing-md); font-weight: 700; color: var(--primary-color);">$38.00</td>
-                            <td style="padding: var(--spacing-md);"><span class="badge"
-                                    style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 600;">Delivered</span>
-                            </td>
-                            <td style="padding: var(--spacing-md); color: var(--text-secondary);">25 mins ago</td>
+                            <td>#ORD-7841</td>
+                            <td>Jane Smith</td>
+                            <td>Biryani, Lassi</td>
+                            <td>$28.00</td>
+                            <td><span class="badge" style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.85rem;">Completed</span></td>
+                            <td>2:15 PM</td>
                         </tr>
                         <tr>
-                            <td style="padding: var(--spacing-md); font-weight: 600;">#ORD-7839</td>
-                            <td style="padding: var(--spacing-md);">Sarah Williams</td>
-                            <td style="padding: var(--spacing-md);">Biryani, Raita</td>
-                            <td style="padding: var(--spacing-md); font-weight: 700; color: var(--primary-color);">$32.00</td>
-                            <td style="padding: var(--spacing-md);"><span class="badge"
-                                    style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 600;">Delivered</span>
-                            </td>
-                            <td style="padding: var(--spacing-md); color: var(--text-secondary);">45 mins ago</td>
+                            <td>#ORD-7840</td>
+                            <td>Mike Johnson</td>
+                            <td>Tandoori Chicken</td>
+                            <td>$38.00</td>
+                            <td><span class="badge" style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.85rem;">Completed</span></td>
+                            <td>1:45 PM</td>
                         </tr>
-                        <tr style="background: var(--bg-secondary);">
-                            <td style="padding: var(--spacing-md); font-weight: 600;">#ORD-7838</td>
-                            <td style="padding: var(--spacing-md);">Robert Chen</td>
-                            <td style="padding: var(--spacing-md);">Wagyu Steak, Red Wine</td>
-                            <td style="padding: var(--spacing-md); font-weight: 700; color: var(--primary-color);">$105.00</td>
-                            <td style="padding: var(--spacing-md);"><span class="badge"
-                                    style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 600;">Delivered</span>
-                            </td>
-                            <td style="padding: var(--spacing-md); color: var(--text-secondary);">1 hr ago</td>
+                        <tr>
+                            <td>#ORD-7839</td>
+                            <td>Sarah Williams</td>
+                            <td>Paneer Tikka, Dal Makhani</td>
+                            <td>$35.50</td>
+                            <td><span class="badge" style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.85rem;">Completed</span></td>
+                            <td>1:30 PM</td>
+                        </tr>
+                        <tr>
+                            <td>#ORD-7838</td>
+                            <td>Robert Brown</td>
+                            <td>Kung Pao Chicken, Fried Rice</td>
+                            <td>$32.00</td>
+                            <td><span class="badge" style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.85rem;">Completed</span></td>
+                            <td>1:10 PM</td>
+                        </tr>
+                        <tr>
+                            <td>#ORD-7837</td>
+                            <td>Emily Davis</td>
+                            <td>Margherita Pizza, Caesar Salad</td>
+                            <td>$41.99</td>
+                            <td><span class="badge" style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.85rem;">Completed</span></td>
+                            <td>12:50 PM</td>
+                        </tr>
+                        <tr>
+                            <td>#ORD-7836</td>
+                            <td>David Martinez</td>
+                            <td>Sushi Platter, Miso Soup</td>
+                            <td>$52.00</td>
+                            <td><span class="badge" style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.85rem;">Completed</span></td>
+                            <td>12:30 PM</td>
+                        </tr>
+                        <tr>
+                            <td>#ORD-7835</td>
+                            <td>Lisa Anderson</td>
+                            <td>Pad Thai, Thai Iced Tea</td>
+                            <td>$29.50</td>
+                            <td><span class="badge" style="background: var(--error-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.85rem;">Cancelled</span></td>
+                            <td>12:10 PM</td>
                         </tr>
                     </tbody>
                 </table>
+            </div>
+
+            <div style="margin-top: var(--spacing-xl);">
+                <h3 style="margin-bottom: var(--spacing-lg);"><i class="fas fa-users"></i> Staff Activity & Menu Analytics</h3>
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h4 style="margin-bottom: var(--spacing-md); color: var(--primary-color);"><i class="fas fa-user-tie"></i> Top Performers Today</h4>
+                        <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md);">
+                                <div style="display: flex; align-items: center; gap: var(--spacing-md);">
+                                    <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #4cc9f0, #4895ef); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">1</div>
+                                    <div>
+                                        <div style="font-weight: 600;">Maria Garcia</div>
+                                        <div style="font-size: 0.85rem; color: var(--text-secondary);">Server</div>
+                                    </div>
+                                </div>
+                                <div style="text-align: right;">
+                                    <div style="font-weight: 700; color: var(--primary-color);">42 Orders</div>
+                                    <div style="font-size: 0.85rem; color: var(--success-color);"><i class="fas fa-star"></i> 4.9</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md);">
+                                <div style="display: flex; align-items: center; gap: var(--spacing-md);">
+                                    <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #27AE60, #2ecc71); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">2</div>
+                                    <div>
+                                        <div style="font-weight: 600;">James Wilson</div>
+                                        <div style="font-size: 0.85rem; color: var(--text-secondary);">Chef</div>
+                                    </div>
+                                </div>
+                                <div style="text-align: right;">
+                                    <div style="font-weight: 700; color: var(--primary-color);">38 Orders</div>
+                                    <div style="font-size: 0.85rem; color: var(--success-color);"><i class="fas fa-star"></i> 4.8</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md);">
+                                <div style="display: flex; align-items: center; gap: var(--spacing-md);">
+                                    <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #FF6B35, #F7931E); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">3</div>
+                                    <div>
+                                        <div style="font-weight: 600;">Anna Lee</div>
+                                        <div style="font-size: 0.85rem; color: var(--text-secondary);">Server</div>
+                                    </div>
+                                </div>
+                                <div style="text-align: right;">
+                                    <div style="font-weight: 700; color: var(--primary-color);">35 Orders</div>
+                                    <div style="font-size: 0.85rem; color: var(--success-color);"><i class="fas fa-star"></i> 4.7</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h4 style="margin-bottom: var(--spacing-md); color: var(--primary-color);"><i class="fas fa-fire"></i> Trending Dishes</h4>
+                        <div style="display: flex; flex-direction: column; gap: var(--spacing-sm);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-sm) 0; border-bottom: 1px solid var(--border-color);">
+                                <div style="display: flex; align-items: center; gap: var(--spacing-sm);">
+                                    <span style="font-size: 1.5rem;">🍗</span>
+                                    <span style="font-weight: 600;">Butter Chicken</span>
+                                </div>
+                                <span style="font-weight: 700; color: var(--primary-color);">156 sold</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-sm) 0; border-bottom: 1px solid var(--border-color);">
+                                <div style="display: flex; align-items: center; gap: var(--spacing-sm);">
+                                    <span style="font-size: 1.5rem;">🍚</span>
+                                    <span style="font-weight: 600;">Chicken Biryani</span>
+                                </div>
+                                <span style="font-weight: 700; color: var(--primary-color);">142 sold</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-sm) 0; border-bottom: 1px solid var(--border-color);">
+                                <div style="display: flex; align-items: center; gap: var(--spacing-sm);">
+                                    <span style="font-size: 1.5rem;">🍕</span>
+                                    <span style="font-weight: 600;">Margherita Pizza</span>
+                                </div>
+                                <span style="font-weight: 700; color: var(--primary-color);">128 sold</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-sm) 0; border-bottom: 1px solid var(--border-color);">
+                                <div style="display: flex; align-items: center; gap: var(--spacing-sm);">
+                                    <span style="font-size: 1.5rem;">🍜</span>
+                                    <span style="font-weight: 600;">Pad Thai</span>
+                                </div>
+                                <span style="font-weight: 700; color: var(--primary-color);">115 sold</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-sm) 0;">
+                                <div style="display: flex; align-items: center; gap: var(--spacing-sm);">
+                                    <span style="font-size: 1.5rem;">🍔</span>
+                                    <span style="font-weight: 600;">Classic Burger</span>
+                                </div>
+                                <span style="font-weight: 700; color: var(--primary-color);">98 sold</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h4 style="margin-bottom: var(--spacing-md); color: var(--primary-color);"><i class="fas fa-bell"></i> System Alerts</h4>
+                        <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+                            <div style="background: rgba(255, 193, 7, 0.1); border-left: 4px solid var(--warning-color); padding: var(--spacing-md); border-radius: var(--radius-md);">
+                                <div style="font-weight: 600; margin-bottom: var(--spacing-xs);"><i class="fas fa-exclamation-triangle"></i> Low Stock Alert</div>
+                                <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">Garlic Naan ingredients running low</p>
+                                <small style="color: var(--text-secondary);">15 minutes ago</small>
+                            </div>
+                            <div style="background: rgba(76, 201, 240, 0.1); border-left: 4px solid #4cc9f0; padding: var(--spacing-md); border-radius: var(--radius-md);">
+                                <div style="font-weight: 600; margin-bottom: var(--spacing-xs);"><i class="fas fa-info-circle"></i> Peak Hour Notice</div>
+                                <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">Lunch rush hour starting soon</p>
+                                <small style="color: var(--text-secondary);">30 minutes ago</small>
+                            </div>
+                            <div style="background: rgba(39, 174, 96, 0.1); border-left: 4px solid var(--success-color); padding: var(--spacing-md); border-radius: var(--radius-md);">
+                                <div style="font-weight: 600; margin-bottom: var(--spacing-xs);"><i class="fas fa-check-circle"></i> Staff Check-In</div>
+                                <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">All staff members present for shift</p>
+                                <small style="color: var(--text-secondary);">1 hour ago</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
     </div>
@@ -735,32 +708,50 @@
     <script src="js/main.js"></script>
     <script src="js/rtl-toggle.js"></script>
     <script>
-        // Mobile Menu Toggle
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        // Mobile Menu
+        const mobileToggle = document.getElementById('mobileMenuToggle');
         const sidebar = document.getElementById('sidebar');
-        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const overlay = document.getElementById('sidebarOverlay');
 
-        function toggleMobileMenu() {
+        function toggleMenu() {
             sidebar.classList.toggle('active');
-            sidebarOverlay.classList.toggle('active');
+            overlay.classList.toggle('active');
         }
 
-        mobileMenuToggle?.addEventListener('click', toggleMobileMenu);
-        sidebarOverlay?.addEventListener('click', toggleMobileMenu);
-
-        // Close mobile menu when clicking a link
+        mobileToggle?.addEventListener('click', toggleMenu);
+        overlay?.addEventListener('click', toggleMenu);
+        
         document.querySelectorAll('.sidebar-link').forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {
                     sidebar.classList.remove('active');
-                    sidebarOverlay.classList.remove('active');
+                    overlay.classList.remove('active');
                 }
             });
         });
 
-        // Revenue Chart
-        const revenueCtx = document.getElementById('revenueChart').getContext('2d');
-        new Chart(revenueCtx, {
+        // Counter Animation
+        document.querySelectorAll('[data-counter]').forEach(counter => {
+            const target = parseFloat(counter.getAttribute('data-counter'));
+            const decimals = parseInt(counter.getAttribute('data-decimals')) || 0;
+            const prefix = counter.getAttribute('data-prefix') || '';
+            const suffix = counter.getAttribute('data-suffix') || '';
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    counter.textContent = prefix + target.toFixed(decimals) + suffix;
+                    clearInterval(timer);
+                } else {
+                    counter.textContent = prefix + current.toFixed(decimals) + suffix;
+                }
+            }, 20);
+        });
+
+        // Chart.js Initialization - 8 Charts
+        // 1. Weekly Revenue Chart
+        new Chart(document.getElementById('revenueChart'), {
             type: 'bar',
             data: {
                 labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
@@ -775,22 +766,18 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
+                plugins: { legend: { display: false } },
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        ticks: { callback: function(value) { return '$' + value; } }
                     }
                 }
             }
         });
 
-        // Popular Dishes Chart
-        const dishesCtx = document.getElementById('dishesChart').getContext('2d');
-        new Chart(dishesCtx, {
+        // 2. Popular Dishes Chart
+        new Chart(document.getElementById('dishesChart'), {
             type: 'doughnut',
             data: {
                 labels: ['Butter Chicken', 'Biryani', 'Kung Pao', 'Tandoori', 'Others'],
@@ -802,14 +789,161 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'bottom'
+                plugins: { legend: { position: 'bottom' } }
+            }
+        });
+
+        // 3. Customer Growth Chart
+        new Chart(document.getElementById('customerGrowthChart'), {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'New Customers',
+                    data: [45, 62, 58, 75, 88, 102],
+                    borderColor: '#27AE60',
+                    backgroundColor: 'rgba(39, 174, 96, 0.1)',
+                    tension: 0.4,
+                    fill: true,
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: { y: { beginAtZero: true } }
+            }
+        });
+
+        // 4. Order Trends Chart
+        new Chart(document.getElementById('orderTrendsChart'), {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Orders',
+                    data: [245, 312, 298, 385, 422, 468],
+                    borderColor: '#4895ef',
+                    backgroundColor: 'rgba(72, 149, 239, 0.1)',
+                    tension: 0.4,
+                    fill: true,
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: { y: { beginAtZero: true } }
+            }
+        });
+
+        // 5. Peak Hours Chart
+        new Chart(document.getElementById('peakHoursChart'), {
+            type: 'bar',
+            data: {
+                labels: ['6AM', '9AM', '12PM', '3PM', '6PM', '9PM', '12AM'],
+                datasets: [{
+                    label: 'Orders',
+                    data: [12, 25, 85, 42, 125, 98, 35],
+                    backgroundColor: [
+                        'rgba(255, 193, 7, 0.7)',
+                        'rgba(76, 201, 240, 0.7)',
+                        'rgba(255, 107, 53, 0.9)',
+                        'rgba(76, 201, 240, 0.7)',
+                        'rgba(255, 107, 53, 0.9)',
+                        'rgba(255, 107, 53, 0.8)',
+                        'rgba(44, 62, 80, 0.7)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: { y: { beginAtZero: true } }
+            }
+        });
+
+        // 6. Staff Performance Chart
+        new Chart(document.getElementById('staffPerformanceChart'), {
+            type: 'radar',
+            data: {
+                labels: ['Speed', 'Accuracy', 'Customer Service', 'Teamwork', 'Efficiency', 'Quality'],
+                datasets: [{
+                    label: 'Performance',
+                    data: [85, 92, 88, 90, 87, 94],
+                    backgroundColor: 'rgba(255, 107, 53, 0.2)',
+                    borderColor: '#FF6B35',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#FF6B35',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#FF6B35'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: { r: { beginAtZero: true, max: 100 } },
+                plugins: { legend: { display: false } }
+            }
+        });
+
+        // 7. Monthly Comparison Chart
+        new Chart(document.getElementById('monthlyComparisonChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [
+                    {
+                        label: 'This Year',
+                        data: [3200, 4100, 3800, 4500, 5200, 6100],
+                        backgroundColor: 'rgba(255, 107, 53, 0.8)'
+                    },
+                    {
+                        label: 'Last Year',
+                        data: [2800, 3500, 3200, 3800, 4200, 4800],
+                        backgroundColor: 'rgba(44, 62, 80, 0.6)'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom' } },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { callback: function(value) { return '$' + value; } }
                     }
                 }
             }
         });
+
+        // 8. Customer Satisfaction Chart
+        new Chart(document.getElementById('satisfactionChart'), {
+            type: 'pie',
+            data: {
+                labels: ['Excellent (5★)', 'Good (4★)', 'Average (3★)', 'Below Average (2★)', 'Poor (1★)'],
+                datasets: [{
+                    data: [65, 22, 8, 3, 2],
+                    backgroundColor: [
+                        '#27AE60',
+                        '#4895ef',
+                        '#FFD700',
+                        '#F7931E',
+                        '#e63946'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom' } }
+            }
+        });
     </script>
 </body>
-
 </html>
