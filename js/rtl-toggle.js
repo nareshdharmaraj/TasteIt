@@ -55,6 +55,8 @@ class RTLToggle {
     }
 
     updateToggleIcon(direction) {
+        // Icon is now static (globe), no need to toggle classes
+        /*
         const rtlToggle = document.getElementById('rtlToggle');
         if (!rtlToggle) return;
 
@@ -68,6 +70,7 @@ class RTLToggle {
                 icon.classList.add('fa-align-left');
             }
         }
+        */
     }
 
     getDirection() {

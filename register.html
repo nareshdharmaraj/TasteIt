@@ -777,8 +777,8 @@
                 <span class="theme-toggle-slider-auth"></span>
             </button>
 
-            <button id="rtlToggle" class="rtl-toggle-auth" aria-label="Toggle RTL">
-                <i class="fas fa-align-left"></i>
+            <button id="rtlToggle" class="rtl-toggle-auth" aria-label="Toggle RTL" style="color: var(--text-primary);">
+                <i class="fas fa-globe"></i>
             </button>
 
             <!-- Mobile Header Container -->
@@ -1020,11 +1020,11 @@
         window.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme');
             const savedDirection = localStorage.getItem('direction');
-            
+
             if (savedTheme === 'dark') {
                 document.body.classList.add('dark');
             }
-            
+
             if (savedDirection === 'rtl') {
                 document.documentElement.setAttribute('dir', 'rtl');
             }

@@ -1276,6 +1276,12 @@ textarea.form-control {
   flex-direction: row-reverse;
 }
 
-[dir="rtl"] .social-links {
-  flex-direction: row-reverse;
+/* Fix for Section Title Alignment */
+.section-title {
+  text-align: center;
+  display: block;
+  left: auto;
+  transform: none;
+  margin-left: auto;
+  margin-right: auto;
 }

@@ -195,8 +195,8 @@
 
                     <!-- RTL Toggle -->
                     <button id="rtlToggle" class="btn-sm"
-                        style="background: transparent; border: 2px solid var(--border-color); border-radius: var(--radius-full); padding: 0.5rem; cursor: pointer;">
-                        <i class="fas fa-align-left"></i>
+                        style="background: transparent; border: 2px solid var(--border-color); border-radius: var(--radius-full); padding: 0.5rem; cursor: pointer; color: var(--text-primary);">
+                        <i class="fas fa-globe"></i>
                     </button>
 
                     <!-- Login Button -->
@@ -238,506 +238,506 @@
         </div>
     </section>
 
-                <section style="background: var(--bg-secondary);">
-                    <div class="faq-container">
-                        <!-- Category Filter -->
-                        <div class="faq-categories">
-                            <button class="category-btn active" onclick="filterCategory('all')">All Questions</button>
-                            <button class="category-btn" onclick="filterCategory('ordering')">Ordering</button>
-                            <button class="category-btn" onclick="filterCategory('delivery')">Delivery</button>
-                            <button class="category-btn" onclick="filterCategory('payment')">Payment</button>
-                            <button class="category-btn" onclick="filterCategory('menu')">Menu & Food</button>
-                            <button class="category-btn" onclick="filterCategory('account')">Account</button>
-                        </div>
+    <section style="background: var(--bg-secondary);">
+        <div class="faq-container">
+            <!-- Category Filter -->
+            <div class="faq-categories">
+                <button class="category-btn active" onclick="filterCategory('all')">All Questions</button>
+                <button class="category-btn" onclick="filterCategory('ordering')">Ordering</button>
+                <button class="category-btn" onclick="filterCategory('delivery')">Delivery</button>
+                <button class="category-btn" onclick="filterCategory('payment')">Payment</button>
+                <button class="category-btn" onclick="filterCategory('menu')">Menu & Food</button>
+                <button class="category-btn" onclick="filterCategory('account')">Account</button>
+            </div>
 
-                        <!-- Ordering FAQs -->
-                        <div class="faq-category-section" data-category="ordering">
-                            <h2 style="margin-bottom: var(--spacing-xl); color: var(--primary-color);">
-                                <i class="fas fa-shopping-cart"></i> Ordering
-                            </h2>
+            <!-- Ordering FAQs -->
+            <div class="faq-category-section" data-category="ordering">
+                <h2 style="margin-bottom: var(--spacing-xl); color: var(--primary-color);">
+                    <i class="fas fa-shopping-cart"></i> Ordering
+                </h2>
 
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>How do I place an order?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        Simply browse our menu, select your desired items, add them to cart, and proceed
-                                        to
-                                        checkout. You can customize each dish and add special instructions.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Can I modify my order after placing it?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        You can modify your order within 5 minutes of placing it. After that, please
-                                        contact our
-                                        support team for assistance.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>What is the minimum order amount?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        The minimum order amount is $15 for delivery orders. There's no minimum for
-                                        pickup orders.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Can I schedule an order for later?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        Yes! You can schedule orders up to 7 days in advance. Select your preferred date
-                                        and time
-                                        during checkout.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Do you accept bulk orders?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        Yes, we accept bulk orders for events and parties. Please contact us at least 48
-                                        hours in
-                                        advance for orders over $200.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Delivery FAQs -->
-                        <div class="faq-category-section" data-category="delivery">
-                            <h2 style="margin-bottom: var(--spacing-xl); color: var(--primary-color);">
-                                <i class="fas fa-truck"></i> Delivery
-                            </h2>
-
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>What are your delivery hours?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        We deliver from 11 AM to 10 PM on weekdays and 11 AM to 11 PM on weekends.
-                                        Orders placed
-                                        after hours will be delivered the next day.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>How long does delivery take?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        Standard delivery takes 30-45 minutes. During peak hours, it may take up to 60
-                                        minutes.
-                                        You'll receive real-time tracking updates.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>What is the delivery fee?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        Delivery fee is $5 for orders under $30, and free for orders above $30. Premium
-                                        locations
-                                        may have additional charges.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Do you deliver to my area?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        We deliver within a 10-mile radius of our restaurant. Enter your address during
-                                        checkout to
-                                        verify delivery availability.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Can I track my order?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        Yes! You'll receive a tracking link via SMS and email. You can also track your
-                                        order in
-                                        real-time from your dashboard.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>What if my order is late?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        If your order is more than 15 minutes late, contact our support team. We'll
-                                        provide a
-                                        discount on your next order as compensation.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Payment FAQs -->
-                        <div class="faq-category-section" data-category="payment">
-                            <h2 style="margin-bottom: var(--spacing-xl); color: var(--primary-color);">
-                                <i class="fas fa-credit-card"></i> Payment
-                            </h2>
-
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>What payment methods do you accept?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        We accept all major credit cards, debit cards, PayPal, Apple Pay, Google Pay,
-                                        and cash on
-                                        delivery.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Is my payment information secure?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        Yes, we use industry-standard SSL encryption and PCI-compliant payment
-                                        processing. Your
-                                        payment information is never stored on our servers.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Can I get a refund?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        Full refunds are available for cancelled orders (within 5 minutes) or if there's
-                                        an issue
-                                        with your order. Refunds are processed within 5-7 business days.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Do you offer discounts or promotions?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        Yes! Check our special offers section, sign up for our newsletter, and follow us
-                                        on social
-                                        media for exclusive deals and promotions.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Can I use multiple payment methods?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        Currently, we only support one payment method per order. You can use reward
-                                        points in
-                                        combination with any payment method.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Menu & Food FAQs -->
-                        <div class="faq-category-section" data-category="menu">
-                            <h2 style="margin-bottom: var(--spacing-xl); color: var(--primary-color);">
-                                <i class="fas fa-utensils"></i> Menu & Food
-                            </h2>
-
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Do you offer vegetarian and vegan options?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        Yes! We have extensive vegetarian options and several vegan dishes. Look for the
-                                        "Vegetarian" badge on our menu items.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>How spicy are your dishes?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        Each dish has a spicy level indicator (🌶️) from 0-4. You can also request to
-                                        adjust the
-                                        spice level when ordering. Just add a note with your preference!
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Can I customize my order?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        Absolutely! You can add special instructions for any dish. We'll do our best to
-                                        accommodate
-                                        your preferences, though some modifications may incur additional charges.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Do you have gluten-free options?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        Yes, we offer several gluten-free dishes. Look for items marked with the
-                                        "Gluten-Free" badge
-                                        or contact us for recommendations.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Are your ingredients fresh and locally sourced?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        We prioritize fresh, high-quality ingredients and source locally whenever
-                                        possible. Our
-                                        produce is delivered daily, and we never use frozen meats.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Do you provide nutritional information?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        Yes, nutritional information is available for all menu items. Click on any dish
-                                        to view
-                                        detailed calorie, protein, carb, and fat content.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Account FAQs -->
-                        <div class="faq-category-section" data-category="account">
-                            <h2 style="margin-bottom: var(--spacing-xl); color: var(--primary-color);">
-                                <i class="fas fa-user"></i> Account
-                            </h2>
-
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Do I need an account to order?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        You can order as a guest, but creating an account gives you access to order
-                                        history, saved
-                                        addresses, reward points, and exclusive offers.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Do you have a loyalty program?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        Yes! Create an account to earn points with every order. Points can be redeemed
-                                        for discounts
-                                        and free items. You also get exclusive access to special offers and early menu
-                                        releases.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>How do I reset my password?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        Click "Forgot Password" on the login page, enter your email, and we'll send you
-                                        a reset
-                                        link. The link expires after 24 hours for security.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Can I save multiple delivery addresses?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        Yes, you can save unlimited delivery addresses in your account. Label them as
-                                        "Home,"
-                                        "Work," etc. for easy selection during checkout.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>How do I delete my account?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        Go to Settings > Account > Delete Account. Note that this action is permanent
-                                        and will
-                                        delete all your order history and reward points.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item scroll-reveal">
-                                <div class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Can I link my social media accounts?</span>
-                                    <i class="fas fa-chevron-down faq-icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        Yes, you can sign up and log in using Facebook, Google, or Apple. This makes
-                                        ordering faster
-                                        and you won't need to remember another password.
-                                    </div>
-                                </div>
-                            </div>
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>How do I place an order?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Simply browse our menu, select your desired items, add them to cart, and proceed
+                            to
+                            checkout. You can customize each dish and add special instructions.
                         </div>
                     </div>
-                </section>
+                </div>
 
-                <footer class="footer">
-                    <div class="container">
-                        <div class="footer-grid">
-                            <div class="footer-section">
-                                <h3><i class="fas fa-utensils"></i> TasteIT</h3>
-                                <p style="color: rgba(255, 255, 255, 0.7);">Experience culinary excellence.</p>
-                            </div>
-                            <div class="footer-section">
-                                <h3>Quick Links</h3>
-                                <ul class="footer-links">
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="menu.html">Menu</a></li>
-                                    <li><a href="faq.html">FAQ</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="footer-bottom">
-                            <p>&copy; 2024 TasteIT. All rights reserved.</p>
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Can I modify my order after placing it?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            You can modify your order within 5 minutes of placing it. After that, please
+                            contact our
+                            support team for assistance.
                         </div>
                     </div>
-                </footer>
+                </div>
 
-                <script src="js/main.js"></script>
-                <script src="js/rtl-toggle.js"></script>
-                <script>
-                    function toggleFaq(element) {
-                        const faqItem = element.parentElement;
-                        const wasActive = faqItem.classList.contains('active');
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>What is the minimum order amount?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            The minimum order amount is $15 for delivery orders. There's no minimum for
+                            pickup orders.
+                        </div>
+                    </div>
+                </div>
 
-                        // Close all FAQ items in the same category
-                        const category = faqItem.closest('.faq-category-section');
-                        category.querySelectorAll('.faq-item').forEach(item => {
-                            item.classList.remove('active');
-                        });
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Can I schedule an order for later?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes! You can schedule orders up to 7 days in advance. Select your preferred date
+                            and time
+                            during checkout.
+                        </div>
+                    </div>
+                </div>
 
-                        // Open clicked item if it wasn't active
-                        if (!wasActive) {
-                            faqItem.classList.add('active');
-                        }
-                    }
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Do you accept bulk orders?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes, we accept bulk orders for events and parties. Please contact us at least 48
+                            hours in
+                            advance for orders over $200.
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                    function filterCategory(category) {
-                        // Update active button
-                        document.querySelectorAll('.category-btn').forEach(btn => {
-                            btn.classList.remove('active');
-                        });
-                        event.target.classList.add('active');
+            <!-- Delivery FAQs -->
+            <div class="faq-category-section" data-category="delivery">
+                <h2 style="margin-bottom: var(--spacing-xl); color: var(--primary-color);">
+                    <i class="fas fa-truck"></i> Delivery
+                </h2>
 
-                        // Show/hide categories
-                        document.querySelectorAll('.faq-category-section').forEach(section => {
-                            if (category === 'all' || section.dataset.category === category) {
-                                section.style.display = 'block';
-                            } else {
-                                section.style.display = 'none';
-                            }
-                        });
-                    }
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>What are your delivery hours?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            We deliver from 11 AM to 10 PM on weekdays and 11 AM to 11 PM on weekends.
+                            Orders placed
+                            after hours will be delivered the next day.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>How long does delivery take?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Standard delivery takes 30-45 minutes. During peak hours, it may take up to 60
+                            minutes.
+                            You'll receive real-time tracking updates.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>What is the delivery fee?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Delivery fee is $5 for orders under $30, and free for orders above $30. Premium
+                            locations
+                            may have additional charges.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Do you deliver to my area?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            We deliver within a 10-mile radius of our restaurant. Enter your address during
+                            checkout to
+                            verify delivery availability.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Can I track my order?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes! You'll receive a tracking link via SMS and email. You can also track your
+                            order in
+                            real-time from your dashboard.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>What if my order is late?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            If your order is more than 15 minutes late, contact our support team. We'll
+                            provide a
+                            discount on your next order as compensation.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment FAQs -->
+            <div class="faq-category-section" data-category="payment">
+                <h2 style="margin-bottom: var(--spacing-xl); color: var(--primary-color);">
+                    <i class="fas fa-credit-card"></i> Payment
+                </h2>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>What payment methods do you accept?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            We accept all major credit cards, debit cards, PayPal, Apple Pay, Google Pay,
+                            and cash on
+                            delivery.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Is my payment information secure?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes, we use industry-standard SSL encryption and PCI-compliant payment
+                            processing. Your
+                            payment information is never stored on our servers.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Can I get a refund?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Full refunds are available for cancelled orders (within 5 minutes) or if there's
+                            an issue
+                            with your order. Refunds are processed within 5-7 business days.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Do you offer discounts or promotions?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes! Check our special offers section, sign up for our newsletter, and follow us
+                            on social
+                            media for exclusive deals and promotions.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Can I use multiple payment methods?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Currently, we only support one payment method per order. You can use reward
+                            points in
+                            combination with any payment method.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menu & Food FAQs -->
+            <div class="faq-category-section" data-category="menu">
+                <h2 style="margin-bottom: var(--spacing-xl); color: var(--primary-color);">
+                    <i class="fas fa-utensils"></i> Menu & Food
+                </h2>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Do you offer vegetarian and vegan options?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes! We have extensive vegetarian options and several vegan dishes. Look for the
+                            "Vegetarian" badge on our menu items.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>How spicy are your dishes?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Each dish has a spicy level indicator (🌶️) from 0-4. You can also request to
+                            adjust the
+                            spice level when ordering. Just add a note with your preference!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Can I customize my order?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Absolutely! You can add special instructions for any dish. We'll do our best to
+                            accommodate
+                            your preferences, though some modifications may incur additional charges.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Do you have gluten-free options?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes, we offer several gluten-free dishes. Look for items marked with the
+                            "Gluten-Free" badge
+                            or contact us for recommendations.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Are your ingredients fresh and locally sourced?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            We prioritize fresh, high-quality ingredients and source locally whenever
+                            possible. Our
+                            produce is delivered daily, and we never use frozen meats.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Do you provide nutritional information?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes, nutritional information is available for all menu items. Click on any dish
+                            to view
+                            detailed calorie, protein, carb, and fat content.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Account FAQs -->
+            <div class="faq-category-section" data-category="account">
+                <h2 style="margin-bottom: var(--spacing-xl); color: var(--primary-color);">
+                    <i class="fas fa-user"></i> Account
+                </h2>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Do I need an account to order?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            You can order as a guest, but creating an account gives you access to order
+                            history, saved
+                            addresses, reward points, and exclusive offers.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Do you have a loyalty program?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes! Create an account to earn points with every order. Points can be redeemed
+                            for discounts
+                            and free items. You also get exclusive access to special offers and early menu
+                            releases.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>How do I reset my password?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Click "Forgot Password" on the login page, enter your email, and we'll send you
+                            a reset
+                            link. The link expires after 24 hours for security.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Can I save multiple delivery addresses?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes, you can save unlimited delivery addresses in your account. Label them as
+                            "Home,"
+                            "Work," etc. for easy selection during checkout.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>How do I delete my account?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Go to Settings > Account > Delete Account. Note that this action is permanent
+                            and will
+                            delete all your order history and reward points.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Can I link my social media accounts?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes, you can sign up and log in using Facebook, Google, or Apple. This makes
+                            ordering faster
+                            and you won't need to remember another password.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3><i class="fas fa-utensils"></i> TasteIT</h3>
+                    <p style="color: rgba(255, 255, 255, 0.7);">Experience culinary excellence.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TasteIT. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/rtl-toggle.js"></script>
+    <script>
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const wasActive = faqItem.classList.contains('active');
+
+            // Close all FAQ items in the same category
+            const category = faqItem.closest('.faq-category-section');
+            category.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Open clicked item if it wasn't active
+            if (!wasActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        function filterCategory(category) {
+            // Update active button
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Show/hide categories
+            document.querySelectorAll('.faq-category-section').forEach(section => {
+                if (category === 'all' || section.dataset.category === category) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
 
 
-                </script>
+    </script>
 </body>
 
 </html>

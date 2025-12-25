@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +9,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             background: var(--bg-secondary);
             font-family: var(--font-body);
@@ -158,7 +163,9 @@
         }
 
         @media (min-width: 1400px) {
-            .stats-grid { grid-template-columns: repeat(4, 1fr); }
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
         }
 
         .stat-card {
@@ -237,7 +244,8 @@
             border-collapse: collapse;
         }
 
-        th, td {
+        th,
+        td {
             padding: var(--spacing-md);
             text-align: left;
             border-bottom: 1px solid var(--border-color);
@@ -255,7 +263,9 @@
 
         /* Responsive */
         @media (max-width: 1200px) {
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
@@ -318,13 +328,14 @@
         }
     </style>
 </head>
+
 <body>
     <button class="mobile-menu-toggle" id="mobileMenuToggle">
         <i class="fas fa-bars"></i>
     </button>
-    
+
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
-    
+
     <div class="dashboard-wrapper">
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-brand">
@@ -338,7 +349,8 @@
                 <li><a href="#" class="sidebar-link"><i class="fas fa-users"></i> Customers</a></li>
                 <li><a href="#" class="sidebar-link"><i class="fas fa-chart-bar"></i> Analytics</a></li>
                 <li><a href="#" class="sidebar-link"><i class="fas fa-cog"></i> Settings</a></li>
-                <li style="margin-top: auto; padding-top: var(--spacing-lg); border-top: 1px solid rgba(255,255,255,0.1);">
+                <li
+                    style="margin-top: auto; padding-top: var(--spacing-lg); border-top: 1px solid rgba(255,255,255,0.1);">
                     <a href="user-dashboard.html" class="sidebar-link"><i class="fas fa-user"></i> User View</a>
                 </li>
                 <li><a href="index.html" class="sidebar-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
@@ -354,7 +366,8 @@
                     </div>
                     <div class="header-actions">
                         <button id="themeToggle" class="btn btn-outline"><i class="fas fa-moon"></i></button>
-                        <button id="rtlToggle" class="btn btn-outline"><i class="fas fa-align-left"></i></button>
+                        <button id="rtlToggle" class="btn btn-outline" style="color: var(--text-primary);"><i
+                                class="fas fa-globe"></i></button>
                     </div>
                 </div>
             </div>
@@ -372,7 +385,8 @@
                 </div>
 
                 <div class="stat-card">
-                    <div class="stat-icon" style="background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white;">
+                    <div class="stat-icon"
+                        style="background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white;">
                         <i class="fas fa-dollar-sign"></i>
                     </div>
                     <div class="stat-value" data-counter="4280" data-prefix="$" data-suffix="+">0</div>
@@ -442,21 +456,24 @@
                 </div>
 
                 <div class="chart-card">
-                    <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-chart-radar"></i> Staff Performance</h3>
+                    <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-chart-radar"></i> Staff Performance
+                    </h3>
                     <div class="chart-container">
                         <canvas id="staffPerformanceChart"></canvas>
                     </div>
                 </div>
 
                 <div class="chart-card">
-                    <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-chart-bar"></i> Monthly Comparison</h3>
+                    <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-chart-bar"></i> Monthly Comparison
+                    </h3>
                     <div class="chart-container">
                         <canvas id="monthlyComparisonChart"></canvas>
                     </div>
                 </div>
 
                 <div class="chart-card">
-                    <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-percentage"></i> Customer Satisfaction</h3>
+                    <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-percentage"></i> Customer
+                        Satisfaction</h3>
                     <div class="chart-container">
                         <canvas id="satisfactionChart"></canvas>
                     </div>
@@ -466,7 +483,8 @@
             <div class="content-grid">
                 <div class="content-card">
                     <h3 style="margin-bottom: var(--spacing-lg);"><i class="fas fa-clock"></i> Pending Orders</h3>
-                    <div style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md); margin-bottom: var(--spacing-sm);">
+                    <div
+                        style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md); margin-bottom: var(--spacing-sm);">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                             <div>
                                 <h5 style="margin-bottom: var(--spacing-xs);">Table #12</h5>
@@ -475,7 +493,8 @@
                             <button class="btn btn-sm btn-primary">Assign</button>
                         </div>
                     </div>
-                    <div style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md);">
+                    <div
+                        style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md);">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                             <div>
                                 <h5 style="margin-bottom: var(--spacing-xs);">Table #8</h5>
@@ -487,13 +506,15 @@
                 </div>
 
                 <div class="content-card">
-                    <h3 style="margin-bottom: var(--spacing-lg);"><i class="fas fa-chart-line"></i> Today's Performance</h3>
+                    <h3 style="margin-bottom: var(--spacing-lg);"><i class="fas fa-chart-line"></i> Today's Performance
+                    </h3>
                     <div style="margin-bottom: var(--spacing-md);">
                         <div style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-xs);">
                             <span>Order Completion Rate</span>
                             <strong>94%</strong>
                         </div>
-                        <div style="height: 8px; background: var(--bg-secondary); border-radius: var(--radius-full); overflow: hidden;">
+                        <div
+                            style="height: 8px; background: var(--bg-secondary); border-radius: var(--radius-full); overflow: hidden;">
                             <div style="width: 94%; height: 100%; background: var(--success-color);"></div>
                         </div>
                     </div>
@@ -502,7 +523,8 @@
                             <span>Customer Satisfaction</span>
                             <strong>98%</strong>
                         </div>
-                        <div style="height: 8px; background: var(--bg-secondary); border-radius: var(--radius-full); overflow: hidden;">
+                        <div
+                            style="height: 8px; background: var(--bg-secondary); border-radius: var(--radius-full); overflow: hidden;">
                             <div style="width: 98%; height: 100%; background: var(--primary-color);"></div>
                         </div>
                     </div>
@@ -528,7 +550,9 @@
                             <td>John Doe</td>
                             <td>Butter Chicken, Naan</td>
                             <td>$42.50</td>
-                            <td><span class="badge" style="background: var(--warning-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.85rem;">In Progress</span></td>
+                            <td><span class="badge"
+                                    style="background: var(--warning-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.85rem;">In
+                                    Progress</span></td>
                             <td>2:30 PM</td>
                         </tr>
                         <tr>
@@ -536,7 +560,9 @@
                             <td>Jane Smith</td>
                             <td>Biryani, Lassi</td>
                             <td>$28.00</td>
-                            <td><span class="badge" style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.85rem;">Completed</span></td>
+                            <td><span class="badge"
+                                    style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.85rem;">Completed</span>
+                            </td>
                             <td>2:15 PM</td>
                         </tr>
                         <tr>
@@ -544,7 +570,9 @@
                             <td>Mike Johnson</td>
                             <td>Tandoori Chicken</td>
                             <td>$38.00</td>
-                            <td><span class="badge" style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.85rem;">Completed</span></td>
+                            <td><span class="badge"
+                                    style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.85rem;">Completed</span>
+                            </td>
                             <td>1:45 PM</td>
                         </tr>
                         <tr>
@@ -552,7 +580,9 @@
                             <td>Sarah Williams</td>
                             <td>Paneer Tikka, Dal Makhani</td>
                             <td>$35.50</td>
-                            <td><span class="badge" style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.85rem;">Completed</span></td>
+                            <td><span class="badge"
+                                    style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.85rem;">Completed</span>
+                            </td>
                             <td>1:30 PM</td>
                         </tr>
                         <tr>
@@ -560,7 +590,9 @@
                             <td>Robert Brown</td>
                             <td>Kung Pao Chicken, Fried Rice</td>
                             <td>$32.00</td>
-                            <td><span class="badge" style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.85rem;">Completed</span></td>
+                            <td><span class="badge"
+                                    style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.85rem;">Completed</span>
+                            </td>
                             <td>1:10 PM</td>
                         </tr>
                         <tr>
@@ -568,7 +600,9 @@
                             <td>Emily Davis</td>
                             <td>Margherita Pizza, Caesar Salad</td>
                             <td>$41.99</td>
-                            <td><span class="badge" style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.85rem;">Completed</span></td>
+                            <td><span class="badge"
+                                    style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.85rem;">Completed</span>
+                            </td>
                             <td>12:50 PM</td>
                         </tr>
                         <tr>
@@ -576,7 +610,9 @@
                             <td>David Martinez</td>
                             <td>Sushi Platter, Miso Soup</td>
                             <td>$52.00</td>
-                            <td><span class="badge" style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.85rem;">Completed</span></td>
+                            <td><span class="badge"
+                                    style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.85rem;">Completed</span>
+                            </td>
                             <td>12:30 PM</td>
                         </tr>
                         <tr>
@@ -584,7 +620,9 @@
                             <td>Lisa Anderson</td>
                             <td>Pad Thai, Thai Iced Tea</td>
                             <td>$29.50</td>
-                            <td><span class="badge" style="background: var(--error-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.85rem;">Cancelled</span></td>
+                            <td><span class="badge"
+                                    style="background: var(--error-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.85rem;">Cancelled</span>
+                            </td>
                             <td>12:10 PM</td>
                         </tr>
                     </tbody>
@@ -592,14 +630,19 @@
             </div>
 
             <div style="margin-top: var(--spacing-xl);">
-                <h3 style="margin-bottom: var(--spacing-lg);"><i class="fas fa-users"></i> Staff Activity & Menu Analytics</h3>
+                <h3 style="margin-bottom: var(--spacing-lg);"><i class="fas fa-users"></i> Staff Activity & Menu
+                    Analytics</h3>
                 <div class="content-grid">
                     <div class="content-card">
-                        <h4 style="margin-bottom: var(--spacing-md); color: var(--primary-color);"><i class="fas fa-user-tie"></i> Top Performers Today</h4>
+                        <h4 style="margin-bottom: var(--spacing-md); color: var(--primary-color);"><i
+                                class="fas fa-user-tie"></i> Top Performers Today</h4>
                         <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
-                            <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md);">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md);">
                                 <div style="display: flex; align-items: center; gap: var(--spacing-md);">
-                                    <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #4cc9f0, #4895ef); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">1</div>
+                                    <div
+                                        style="width: 40px; height: 40px; background: linear-gradient(135deg, #4cc9f0, #4895ef); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                                        1</div>
                                     <div>
                                         <div style="font-weight: 600;">Maria Garcia</div>
                                         <div style="font-size: 0.85rem; color: var(--text-secondary);">Server</div>
@@ -607,12 +650,16 @@
                                 </div>
                                 <div style="text-align: right;">
                                     <div style="font-weight: 700; color: var(--primary-color);">42 Orders</div>
-                                    <div style="font-size: 0.85rem; color: var(--success-color);"><i class="fas fa-star"></i> 4.9</div>
+                                    <div style="font-size: 0.85rem; color: var(--success-color);"><i
+                                            class="fas fa-star"></i> 4.9</div>
                                 </div>
                             </div>
-                            <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md);">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md);">
                                 <div style="display: flex; align-items: center; gap: var(--spacing-md);">
-                                    <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #27AE60, #2ecc71); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">2</div>
+                                    <div
+                                        style="width: 40px; height: 40px; background: linear-gradient(135deg, #27AE60, #2ecc71); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                                        2</div>
                                     <div>
                                         <div style="font-weight: 600;">James Wilson</div>
                                         <div style="font-size: 0.85rem; color: var(--text-secondary);">Chef</div>
@@ -620,12 +667,16 @@
                                 </div>
                                 <div style="text-align: right;">
                                     <div style="font-weight: 700; color: var(--primary-color);">38 Orders</div>
-                                    <div style="font-size: 0.85rem; color: var(--success-color);"><i class="fas fa-star"></i> 4.8</div>
+                                    <div style="font-size: 0.85rem; color: var(--success-color);"><i
+                                            class="fas fa-star"></i> 4.8</div>
                                 </div>
                             </div>
-                            <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md);">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md);">
                                 <div style="display: flex; align-items: center; gap: var(--spacing-md);">
-                                    <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #FF6B35, #F7931E); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">3</div>
+                                    <div
+                                        style="width: 40px; height: 40px; background: linear-gradient(135deg, #FF6B35, #F7931E); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                                        3</div>
                                     <div>
                                         <div style="font-weight: 600;">Anna Lee</div>
                                         <div style="font-size: 0.85rem; color: var(--text-secondary);">Server</div>
@@ -633,44 +684,51 @@
                                 </div>
                                 <div style="text-align: right;">
                                     <div style="font-weight: 700; color: var(--primary-color);">35 Orders</div>
-                                    <div style="font-size: 0.85rem; color: var(--success-color);"><i class="fas fa-star"></i> 4.7</div>
+                                    <div style="font-size: 0.85rem; color: var(--success-color);"><i
+                                            class="fas fa-star"></i> 4.7</div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="content-card">
-                        <h4 style="margin-bottom: var(--spacing-md); color: var(--primary-color);"><i class="fas fa-fire"></i> Trending Dishes</h4>
+                        <h4 style="margin-bottom: var(--spacing-md); color: var(--primary-color);"><i
+                                class="fas fa-fire"></i> Trending Dishes</h4>
                         <div style="display: flex; flex-direction: column; gap: var(--spacing-sm);">
-                            <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-sm) 0; border-bottom: 1px solid var(--border-color);">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-sm) 0; border-bottom: 1px solid var(--border-color);">
                                 <div style="display: flex; align-items: center; gap: var(--spacing-sm);">
                                     <span style="font-size: 1.5rem;">🍗</span>
                                     <span style="font-weight: 600;">Butter Chicken</span>
                                 </div>
                                 <span style="font-weight: 700; color: var(--primary-color);">156 sold</span>
                             </div>
-                            <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-sm) 0; border-bottom: 1px solid var(--border-color);">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-sm) 0; border-bottom: 1px solid var(--border-color);">
                                 <div style="display: flex; align-items: center; gap: var(--spacing-sm);">
                                     <span style="font-size: 1.5rem;">🍚</span>
                                     <span style="font-weight: 600;">Chicken Biryani</span>
                                 </div>
                                 <span style="font-weight: 700; color: var(--primary-color);">142 sold</span>
                             </div>
-                            <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-sm) 0; border-bottom: 1px solid var(--border-color);">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-sm) 0; border-bottom: 1px solid var(--border-color);">
                                 <div style="display: flex; align-items: center; gap: var(--spacing-sm);">
                                     <span style="font-size: 1.5rem;">🍕</span>
                                     <span style="font-weight: 600;">Margherita Pizza</span>
                                 </div>
                                 <span style="font-weight: 700; color: var(--primary-color);">128 sold</span>
                             </div>
-                            <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-sm) 0; border-bottom: 1px solid var(--border-color);">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-sm) 0; border-bottom: 1px solid var(--border-color);">
                                 <div style="display: flex; align-items: center; gap: var(--spacing-sm);">
                                     <span style="font-size: 1.5rem;">🍜</span>
                                     <span style="font-weight: 600;">Pad Thai</span>
                                 </div>
                                 <span style="font-weight: 700; color: var(--primary-color);">115 sold</span>
                             </div>
-                            <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-sm) 0;">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-sm) 0;">
                                 <div style="display: flex; align-items: center; gap: var(--spacing-sm);">
                                     <span style="font-size: 1.5rem;">🍔</span>
                                     <span style="font-weight: 600;">Classic Burger</span>
@@ -681,21 +739,31 @@
                     </div>
 
                     <div class="content-card">
-                        <h4 style="margin-bottom: var(--spacing-md); color: var(--primary-color);"><i class="fas fa-bell"></i> System Alerts</h4>
+                        <h4 style="margin-bottom: var(--spacing-md); color: var(--primary-color);"><i
+                                class="fas fa-bell"></i> System Alerts</h4>
                         <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
-                            <div style="background: rgba(255, 193, 7, 0.1); border-left: 4px solid var(--warning-color); padding: var(--spacing-md); border-radius: var(--radius-md);">
-                                <div style="font-weight: 600; margin-bottom: var(--spacing-xs);"><i class="fas fa-exclamation-triangle"></i> Low Stock Alert</div>
-                                <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">Garlic Naan ingredients running low</p>
+                            <div
+                                style="background: rgba(255, 193, 7, 0.1); border-left: 4px solid var(--warning-color); padding: var(--spacing-md); border-radius: var(--radius-md);">
+                                <div style="font-weight: 600; margin-bottom: var(--spacing-xs);"><i
+                                        class="fas fa-exclamation-triangle"></i> Low Stock Alert</div>
+                                <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">Garlic Naan
+                                    ingredients running low</p>
                                 <small style="color: var(--text-secondary);">15 minutes ago</small>
                             </div>
-                            <div style="background: rgba(76, 201, 240, 0.1); border-left: 4px solid #4cc9f0; padding: var(--spacing-md); border-radius: var(--radius-md);">
-                                <div style="font-weight: 600; margin-bottom: var(--spacing-xs);"><i class="fas fa-info-circle"></i> Peak Hour Notice</div>
-                                <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">Lunch rush hour starting soon</p>
+                            <div
+                                style="background: rgba(76, 201, 240, 0.1); border-left: 4px solid #4cc9f0; padding: var(--spacing-md); border-radius: var(--radius-md);">
+                                <div style="font-weight: 600; margin-bottom: var(--spacing-xs);"><i
+                                        class="fas fa-info-circle"></i> Peak Hour Notice</div>
+                                <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">Lunch rush hour
+                                    starting soon</p>
                                 <small style="color: var(--text-secondary);">30 minutes ago</small>
                             </div>
-                            <div style="background: rgba(39, 174, 96, 0.1); border-left: 4px solid var(--success-color); padding: var(--spacing-md); border-radius: var(--radius-md);">
-                                <div style="font-weight: 600; margin-bottom: var(--spacing-xs);"><i class="fas fa-check-circle"></i> Staff Check-In</div>
-                                <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">All staff members present for shift</p>
+                            <div
+                                style="background: rgba(39, 174, 96, 0.1); border-left: 4px solid var(--success-color); padding: var(--spacing-md); border-radius: var(--radius-md);">
+                                <div style="font-weight: 600; margin-bottom: var(--spacing-xs);"><i
+                                        class="fas fa-check-circle"></i> Staff Check-In</div>
+                                <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">All staff members
+                                    present for shift</p>
                                 <small style="color: var(--text-secondary);">1 hour ago</small>
                             </div>
                         </div>
@@ -720,7 +788,7 @@
 
         mobileToggle?.addEventListener('click', toggleMenu);
         overlay?.addEventListener('click', toggleMenu);
-        
+
         document.querySelectorAll('.sidebar-link').forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {
@@ -770,7 +838,7 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        ticks: { callback: function(value) { return '$' + value; } }
+                        ticks: { callback: function (value) { return '$' + value; } }
                     }
                 }
             }
@@ -916,7 +984,7 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        ticks: { callback: function(value) { return '$' + value; } }
+                        ticks: { callback: function (value) { return '$' + value; } }
                     }
                 }
             }
@@ -946,4 +1014,5 @@
         });
     </script>
 </body>
+
 </html>

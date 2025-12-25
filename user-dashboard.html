@@ -380,15 +380,19 @@
             <div class="sidebar-label">USER DASHBOARD</div>
 
             <ul class="sidebar-nav">
-                <li><a href="#" class="sidebar-link active" data-tab="dashboard"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="#" class="sidebar-link active" data-tab="dashboard"><i class="fas fa-home"></i>
+                        Dashboard</a></li>
                 <li><a href="menu.html" class="sidebar-link"><i class="fas fa-utensils"></i> Menu</a></li>
                 <li><a href="order.html" class="sidebar-link"><i class="fas fa-shopping-cart"></i> New Order</a></li>
-                <li><a href="#" class="sidebar-link" data-tab="history"><i class="fas fa-history"></i> Order History</a></li>
-                <li><a href="#" class="sidebar-link" data-tab="favorites"><i class="fas fa-heart"></i> Favorites</a></li>
+                <li><a href="#" class="sidebar-link" data-tab="history"><i class="fas fa-history"></i> Order History</a>
+                </li>
+                <li><a href="#" class="sidebar-link" data-tab="favorites"><i class="fas fa-heart"></i> Favorites</a>
+                </li>
                 <li><a href="#" class="sidebar-link" data-tab="rewards"><i class="fas fa-gift"></i> Rewards</a></li>
                 <li><a href="#" class="sidebar-link" data-tab="profile"><i class="fas fa-user"></i> Profile</a></li>
                 <li><a href="#" class="sidebar-link" data-tab="settings"><i class="fas fa-cog"></i> Settings</a></li>
-                <li style="margin-top: auto; padding-top: var(--spacing-lg); border-top: 1px solid rgba(255,255,255,0.1);">
+                <li
+                    style="margin-top: auto; padding-top: var(--spacing-lg); border-top: 1px solid rgba(255,255,255,0.1);">
                     <a href="admin-dashboard.html" class="sidebar-link"><i class="fas fa-chart-bar"></i> Admin Panel</a>
                 </li>
                 <li><a href="index.html" class="sidebar-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
@@ -402,14 +406,15 @@
                 <div class="header-content">
                     <div>
                         <h1 style="margin-bottom: var(--spacing-xs);">Welcome back, John!</h1>
-                        <p style="color: var(--text-secondary); margin: 0;">Here's what's happening with your orders today</p>
+                        <p style="color: var(--text-secondary); margin: 0;">Here's what's happening with your orders
+                            today</p>
                     </div>
                     <div class="header-actions">
                         <button id="themeToggle" class="btn btn-outline">
                             <i class="fas fa-moon"></i>
                         </button>
-                        <button id="rtlToggle" class="btn btn-outline">
-                            <i class="fas fa-align-left"></i>
+                        <button id="rtlToggle" class="btn btn-outline" style="color: var(--text-primary);">
+                            <i class="fas fa-globe"></i>
                         </button>
                         <a href="order.html" class="btn btn-primary">
                             <i class="fas fa-plus"></i> New Order
@@ -423,7 +428,8 @@
                 <!-- Stats -->
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-icon" style="background: linear-gradient(135deg, #4cc9f0, #4895ef); color: white;">
+                        <div class="stat-icon"
+                            style="background: linear-gradient(135deg, #4cc9f0, #4895ef); color: white;">
                             <i class="fas fa-shopping-bag"></i>
                         </div>
                         <div class="stat-value" data-counter="24">0</div>
@@ -434,7 +440,8 @@
                     </div>
 
                     <div class="stat-card">
-                        <div class="stat-icon" style="background: linear-gradient(135deg, #27AE60, #2ecc71); color: white;">
+                        <div class="stat-icon"
+                            style="background: linear-gradient(135deg, #27AE60, #2ecc71); color: white;">
                             <i class="fas fa-star"></i>
                         </div>
                         <div class="stat-value" data-counter="1250" data-suffix="+">0</div>
@@ -445,7 +452,8 @@
                     </div>
 
                     <div class="stat-card">
-                        <div class="stat-icon" style="background: linear-gradient(135deg, #FF6B35, #F7931E); color: white;">
+                        <div class="stat-icon"
+                            style="background: linear-gradient(135deg, #FF6B35, #F7931E); color: white;">
                             <i class="fas fa-dollar-sign"></i>
                         </div>
                         <div class="stat-value" data-counter="842" data-prefix="$">0</div>
@@ -456,7 +464,8 @@
                     </div>
 
                     <div class="stat-card">
-                        <div class="stat-icon" style="background: linear-gradient(135deg, #e63946, #f77f00); color: white;">
+                        <div class="stat-icon"
+                            style="background: linear-gradient(135deg, #e63946, #f77f00); color: white;">
                             <i class="fas fa-heart"></i>
                         </div>
                         <div class="stat-value" data-counter="12" data-suffix="+">0</div>
@@ -470,56 +479,64 @@
                 <!-- Charts -->
                 <div class="charts-grid">
                     <div class="chart-card">
-                        <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-chart-line"></i> Order History</h3>
+                        <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-chart-line"></i> Order History
+                        </h3>
                         <div class="chart-container">
                             <canvas id="orderChart"></canvas>
                         </div>
                     </div>
 
                     <div class="chart-card">
-                        <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-chart-pie"></i> Spending by Category</h3>
+                        <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-chart-pie"></i> Spending by
+                            Category</h3>
                         <div class="chart-container">
                             <canvas id="spendingChart"></canvas>
                         </div>
                     </div>
 
                     <div class="chart-card">
-                        <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-chart-bar"></i> Monthly Spending Trend</h3>
+                        <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-chart-bar"></i> Monthly Spending
+                            Trend</h3>
                         <div class="chart-container">
                             <canvas id="monthlySpendingChart"></canvas>
                         </div>
                     </div>
 
                     <div class="chart-card">
-                        <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-clock"></i> Order Time Distribution</h3>
+                        <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-clock"></i> Order Time
+                            Distribution</h3>
                         <div class="chart-container">
                             <canvas id="orderTimeChart"></canvas>
                         </div>
                     </div>
 
                     <div class="chart-card">
-                        <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-chart-radar"></i> Favorite Cuisines</h3>
+                        <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-chart-radar"></i> Favorite
+                            Cuisines</h3>
                         <div class="chart-container">
                             <canvas id="cuisineChart"></canvas>
                         </div>
                     </div>
 
                     <div class="chart-card">
-                        <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-chart-area"></i> Reward Points Progress</h3>
+                        <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-chart-area"></i> Reward Points
+                            Progress</h3>
                         <div class="chart-container">
                             <canvas id="rewardPointsChart"></canvas>
                         </div>
                     </div>
 
                     <div class="chart-card">
-                        <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-calendar-week"></i> Weekly Activity</h3>
+                        <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-calendar-week"></i> Weekly
+                            Activity</h3>
                         <div class="chart-container">
                             <canvas id="weeklyActivityChart"></canvas>
                         </div>
                     </div>
 
                     <div class="chart-card">
-                        <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-truck"></i> Delivery Time Analysis</h3>
+                        <h3 style="margin-bottom: var(--spacing-md);"><i class="fas fa-truck"></i> Delivery Time
+                            Analysis</h3>
                         <div class="chart-container">
                             <canvas id="deliveryTimeChart"></canvas>
                         </div>
@@ -530,12 +547,16 @@
                 <div class="content-card">
                     <h3 style="margin-bottom: var(--spacing-lg);"><i class="fas fa-history"></i> Recent Orders</h3>
                     <div class="order-card">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-sm);">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-sm);">
                             <div>
                                 <h4 style="margin: 0;">Order #ORD-7842</h4>
-                                <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">Dec 5, 2024 at 7:30 PM</p>
+                                <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">Dec 5, 2024 at
+                                    7:30 PM</p>
                             </div>
-                            <span class="badge" style="background: var(--warning-color); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-size: 0.875rem;">In Progress</span>
+                            <span class="badge"
+                                style="background: var(--warning-color); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-size: 0.875rem;">In
+                                Progress</span>
                         </div>
                         <p style="margin: var(--spacing-sm) 0;">Butter Chicken, Naan, Biryani</p>
                         <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -552,22 +573,27 @@
                     <div class="header-content">
                         <div>
                             <h2><i class="fas fa-history"></i> Order History</h2>
-                            <p style="color: var(--text-secondary); margin-top: var(--spacing-sm);">View all your past orders and track status</p>
+                            <p style="color: var(--text-secondary); margin-top: var(--spacing-sm);">View all your past
+                                orders and track status</p>
                         </div>
                         <button class="btn btn-outline btn-sm"><i class="fas fa-download"></i> Export</button>
                     </div>
                 </div>
 
                 <div class="order-card">
-                    <div style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: var(--spacing-md); margin-bottom: var(--spacing-md);">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: var(--spacing-md); margin-bottom: var(--spacing-md);">
                         <div style="flex: 1;">
                             <h4 style="margin-bottom: var(--spacing-xs);">Order #ORD-7842</h4>
-                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem;">Dec 20, 2024 at 2:30 PM</p>
-                            <p style="margin-top: var(--spacing-sm); margin-bottom: 0;">Butter Chicken, Garlic Naan (2x), Mango Lassi</p>
+                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem;">Dec 20, 2024 at
+                                2:30 PM</p>
+                            <p style="margin-top: var(--spacing-sm); margin-bottom: 0;">Butter Chicken, Garlic Naan
+                                (2x), Mango Lassi</p>
                         </div>
                         <div style="text-align: right;">
                             <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary-color);">$42.50</div>
-                            <span class="badge" style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-size: 0.875rem; margin-top: var(--spacing-sm);">Delivered</span>
+                            <span class="badge"
+                                style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-size: 0.875rem; margin-top: var(--spacing-sm);">Delivered</span>
                             <div style="margin-top: var(--spacing-md);">
                                 <button class="btn btn-sm btn-primary"><i class="fas fa-redo"></i> Reorder</button>
                             </div>
@@ -576,15 +602,19 @@
                 </div>
 
                 <div class="order-card">
-                    <div style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: var(--spacing-md); margin-bottom: var(--spacing-md);">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: var(--spacing-md); margin-bottom: var(--spacing-md);">
                         <div style="flex: 1;">
                             <h4 style="margin-bottom: var(--spacing-xs);">Order #ORD-7841</h4>
-                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem;">Dec 18, 2024 at 7:15 PM</p>
-                            <p style="margin-top: var(--spacing-sm); margin-bottom: 0;">Chicken Biryani, Raita, Gulab Jamun</p>
+                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem;">Dec 18, 2024 at
+                                7:15 PM</p>
+                            <p style="margin-top: var(--spacing-sm); margin-bottom: 0;">Chicken Biryani, Raita, Gulab
+                                Jamun</p>
                         </div>
                         <div style="text-align: right;">
                             <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary-color);">$35.99</div>
-                            <span class="badge" style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-size: 0.875rem; margin-top: var(--spacing-sm);">Delivered</span>
+                            <span class="badge"
+                                style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-size: 0.875rem; margin-top: var(--spacing-sm);">Delivered</span>
                             <div style="margin-top: var(--spacing-md);">
                                 <button class="btn btn-sm btn-primary"><i class="fas fa-redo"></i> Reorder</button>
                             </div>
@@ -593,15 +623,19 @@
                 </div>
 
                 <div class="order-card">
-                    <div style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: var(--spacing-md); margin-bottom: var(--spacing-md);">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: var(--spacing-md); margin-bottom: var(--spacing-md);">
                         <div style="flex: 1;">
                             <h4 style="margin-bottom: var(--spacing-xs);">Order #ORD-7840</h4>
-                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem;">Dec 15, 2024 at 1:00 PM</p>
-                            <p style="margin-top: var(--spacing-sm); margin-bottom: 0;">Paneer Tikka, Dal Makhani, Tandoori Roti</p>
+                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem;">Dec 15, 2024 at
+                                1:00 PM</p>
+                            <p style="margin-top: var(--spacing-sm); margin-bottom: 0;">Paneer Tikka, Dal Makhani,
+                                Tandoori Roti</p>
                         </div>
                         <div style="text-align: right;">
                             <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary-color);">$28.50</div>
-                            <span class="badge" style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-size: 0.875rem; margin-top: var(--spacing-sm);">Delivered</span>
+                            <span class="badge"
+                                style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-size: 0.875rem; margin-top: var(--spacing-sm);">Delivered</span>
                             <div style="margin-top: var(--spacing-md);">
                                 <button class="btn btn-sm btn-primary"><i class="fas fa-redo"></i> Reorder</button>
                             </div>
@@ -610,15 +644,19 @@
                 </div>
 
                 <div class="order-card">
-                    <div style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: var(--spacing-md); margin-bottom: var(--spacing-md);">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: var(--spacing-md); margin-bottom: var(--spacing-md);">
                         <div style="flex: 1;">
                             <h4 style="margin-bottom: var(--spacing-xs);">Order #ORD-7839</h4>
-                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem;">Dec 12, 2024 at 8:45 PM</p>
-                            <p style="margin-top: var(--spacing-sm); margin-bottom: 0;">Kung Pao Chicken, Fried Rice, Spring Rolls</p>
+                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem;">Dec 12, 2024 at
+                                8:45 PM</p>
+                            <p style="margin-top: var(--spacing-sm); margin-bottom: 0;">Kung Pao Chicken, Fried Rice,
+                                Spring Rolls</p>
                         </div>
                         <div style="text-align: right;">
                             <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary-color);">$32.00</div>
-                            <span class="badge" style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-size: 0.875rem; margin-top: var(--spacing-sm);">Delivered</span>
+                            <span class="badge"
+                                style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-size: 0.875rem; margin-top: var(--spacing-sm);">Delivered</span>
                             <div style="margin-top: var(--spacing-md);">
                                 <button class="btn btn-sm btn-primary"><i class="fas fa-redo"></i> Reorder</button>
                             </div>
@@ -627,32 +665,41 @@
                 </div>
 
                 <div class="order-card">
-                    <div style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: var(--spacing-md); margin-bottom: var(--spacing-md);">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: var(--spacing-md); margin-bottom: var(--spacing-md);">
                         <div style="flex: 1;">
                             <h4 style="margin-bottom: var(--spacing-xs);">Order #ORD-7838</h4>
-                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem;">Dec 10, 2024 at 6:30 PM</p>
-                            <p style="margin-top: var(--spacing-sm); margin-bottom: 0;">Margherita Pizza, Caesar Salad, Tiramisu</p>
+                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem;">Dec 10, 2024 at
+                                6:30 PM</p>
+                            <p style="margin-top: var(--spacing-sm); margin-bottom: 0;">Margherita Pizza, Caesar Salad,
+                                Tiramisu</p>
                         </div>
                         <div style="text-align: right;">
                             <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary-color);">$45.99</div>
-                            <span class="badge" style="background: var(--error-color); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-size: 0.875rem; margin-top: var(--spacing-sm);">Cancelled</span>
+                            <span class="badge"
+                                style="background: var(--error-color); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-size: 0.875rem; margin-top: var(--spacing-sm);">Cancelled</span>
                             <div style="margin-top: var(--spacing-md);">
-                                <button class="btn btn-sm btn-outline"><i class="fas fa-info-circle"></i> Details</button>
+                                <button class="btn btn-sm btn-outline"><i class="fas fa-info-circle"></i>
+                                    Details</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="order-card">
-                    <div style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: var(--spacing-md); margin-bottom: var(--spacing-md);">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: var(--spacing-md); margin-bottom: var(--spacing-md);">
                         <div style="flex: 1;">
                             <h4 style="margin-bottom: var(--spacing-xs);">Order #ORD-7837</h4>
-                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem;">Dec 8, 2024 at 5:15 PM</p>
-                            <p style="margin-top: var(--spacing-sm); margin-bottom: 0;">Pad Thai, Tom Yum Soup, Thai Iced Tea</p>
+                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem;">Dec 8, 2024 at 5:15
+                                PM</p>
+                            <p style="margin-top: var(--spacing-sm); margin-bottom: 0;">Pad Thai, Tom Yum Soup, Thai
+                                Iced Tea</p>
                         </div>
                         <div style="text-align: right;">
                             <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary-color);">$38.50</div>
-                            <span class="badge" style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-size: 0.875rem; margin-top: var(--spacing-sm);">Delivered</span>
+                            <span class="badge"
+                                style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-size: 0.875rem; margin-top: var(--spacing-sm);">Delivered</span>
                             <div style="margin-top: var(--spacing-md);">
                                 <button class="btn btn-sm btn-primary"><i class="fas fa-redo"></i> Reorder</button>
                             </div>
@@ -661,15 +708,19 @@
                 </div>
 
                 <div class="order-card">
-                    <div style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: var(--spacing-md); margin-bottom: var(--spacing-md);">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: var(--spacing-md); margin-bottom: var(--spacing-md);">
                         <div style="flex: 1;">
                             <h4 style="margin-bottom: var(--spacing-xs);">Order #ORD-7836</h4>
-                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem;">Dec 5, 2024 at 7:00 PM</p>
-                            <p style="margin-top: var(--spacing-sm); margin-bottom: 0;">Sushi Platter, Miso Soup, Edamame</p>
+                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem;">Dec 5, 2024 at 7:00
+                                PM</p>
+                            <p style="margin-top: var(--spacing-sm); margin-bottom: 0;">Sushi Platter, Miso Soup,
+                                Edamame</p>
                         </div>
                         <div style="text-align: right;">
                             <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary-color);">$52.00</div>
-                            <span class="badge" style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-size: 0.875rem; margin-top: var(--spacing-sm);">Delivered</span>
+                            <span class="badge"
+                                style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-size: 0.875rem; margin-top: var(--spacing-sm);">Delivered</span>
                             <div style="margin-top: var(--spacing-md);">
                                 <button class="btn btn-sm btn-primary"><i class="fas fa-redo"></i> Reorder</button>
                             </div>
@@ -678,15 +729,19 @@
                 </div>
 
                 <div class="order-card">
-                    <div style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: var(--spacing-md); margin-bottom: var(--spacing-md);">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: var(--spacing-md); margin-bottom: var(--spacing-md);">
                         <div style="flex: 1;">
                             <h4 style="margin-bottom: var(--spacing-xs);">Order #ORD-7835</h4>
-                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem;">Dec 3, 2024 at 12:30 PM</p>
-                            <p style="margin-top: var(--spacing-sm); margin-bottom: 0;">Chicken Fajitas, Nachos, Margarita</p>
+                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem;">Dec 3, 2024 at
+                                12:30 PM</p>
+                            <p style="margin-top: var(--spacing-sm); margin-bottom: 0;">Chicken Fajitas, Nachos,
+                                Margarita</p>
                         </div>
                         <div style="text-align: right;">
                             <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary-color);">$41.50</div>
-                            <span class="badge" style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-size: 0.875rem; margin-top: var(--spacing-sm);">Delivered</span>
+                            <span class="badge"
+                                style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-size: 0.875rem; margin-top: var(--spacing-sm);">Delivered</span>
                             <div style="margin-top: var(--spacing-md);">
                                 <button class="btn btn-sm btn-primary"><i class="fas fa-redo"></i> Reorder</button>
                             </div>
@@ -695,15 +750,19 @@
                 </div>
 
                 <div class="order-card">
-                    <div style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: var(--spacing-md); margin-bottom: var(--spacing-md);">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: var(--spacing-md); margin-bottom: var(--spacing-md);">
                         <div style="flex: 1;">
                             <h4 style="margin-bottom: var(--spacing-xs);">Order #ORD-7834</h4>
-                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem;">Dec 1, 2024 at 8:20 PM</p>
-                            <p style="margin-top: var(--spacing-sm); margin-bottom: 0;">BBQ Ribs, Coleslaw, Cornbread</p>
+                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem;">Dec 1, 2024 at 8:20
+                                PM</p>
+                            <p style="margin-top: var(--spacing-sm); margin-bottom: 0;">BBQ Ribs, Coleslaw, Cornbread
+                            </p>
                         </div>
                         <div style="text-align: right;">
                             <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary-color);">$48.99</div>
-                            <span class="badge" style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-size: 0.875rem; margin-top: var(--spacing-sm);">Delivered</span>
+                            <span class="badge"
+                                style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-full); font-size: 0.875rem; margin-top: var(--spacing-sm);">Delivered</span>
                             <div style="margin-top: var(--spacing-md);">
                                 <button class="btn btn-sm btn-primary"><i class="fas fa-redo"></i> Reorder</button>
                             </div>
@@ -722,98 +781,128 @@
                     <div class="header-content">
                         <div>
                             <h2><i class="fas fa-heart"></i> Favorite Dishes</h2>
-                            <p style="color: var(--text-secondary); margin-top: var(--spacing-sm);">Quick access to your most loved meals</p>
+                            <p style="color: var(--text-secondary); margin-top: var(--spacing-sm);">Quick access to your
+                                most loved meals</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="content-grid">
                     <div class="content-card" style="overflow: hidden;">
-                        <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400" alt="Butter Chicken" style="width: 100%; height: 180px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
+                        <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400"
+                            alt="Butter Chicken"
+                            style="width: 100%; height: 180px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
                         <h4 style="margin-bottom: var(--spacing-sm);">Butter Chicken</h4>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">Creamy tomato-based curry with tender chicken pieces</p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">
+                            Creamy tomato-based curry with tender chicken pieces</p>
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color);">$18.99</span>
+                            <span
+                                style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color);">$18.99</span>
                             <button class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                         </div>
                     </div>
 
                     <div class="content-card" style="overflow: hidden;">
-                        <img src="https://images.unsplash.com/photo-1563379091339-03b847259796?w=400" alt="Biryani" style="width: 100%; height: 180px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
+                        <img src="https://images.unsplash.com/photo-1563379091339-03b847259796?w=400" alt="Biryani"
+                            style="width: 100%; height: 180px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
                         <h4 style="margin-bottom: var(--spacing-sm);">Chicken Biryani</h4>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">Aromatic basmati rice with spiced chicken and herbs</p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">
+                            Aromatic basmati rice with spiced chicken and herbs</p>
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color);">$20.99</span>
+                            <span
+                                style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color);">$20.99</span>
                             <button class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                         </div>
                     </div>
 
                     <div class="content-card" style="overflow: hidden;">
-                        <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=400" alt="Paneer" style="width: 100%; height: 180px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
+                        <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=400" alt="Paneer"
+                            style="width: 100%; height: 180px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
                         <h4 style="margin-bottom: var(--spacing-sm);">Paneer Tikka Masala</h4>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">Grilled cottage cheese cubes in rich tomato gravy</p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">
+                            Grilled cottage cheese cubes in rich tomato gravy</p>
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color);">$16.99</span>
+                            <span
+                                style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color);">$16.99</span>
                             <button class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                         </div>
                     </div>
 
                     <div class="content-card" style="overflow: hidden;">
-                        <img src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=400" alt="Naan" style="width: 100%; height: 180px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
+                        <img src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=400" alt="Naan"
+                            style="width: 100%; height: 180px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
                         <h4 style="margin-bottom: var(--spacing-sm);">Garlic Naan</h4>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">Soft flatbread topped with fresh garlic and butter</p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">
+                            Soft flatbread topped with fresh garlic and butter</p>
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color);">$3.99</span>
+                            <span
+                                style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color);">$3.99</span>
                             <button class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                         </div>
                     </div>
 
                     <div class="content-card" style="overflow: hidden;">
-                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400" alt="Tandoori" style="width: 100%; height: 180px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
+                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400" alt="Tandoori"
+                            style="width: 100%; height: 180px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
                         <h4 style="margin-bottom: var(--spacing-sm);">Tandoori Chicken</h4>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">Yogurt-marinated chicken cooked in clay oven</p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">
+                            Yogurt-marinated chicken cooked in clay oven</p>
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color);">$19.99</span>
+                            <span
+                                style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color);">$19.99</span>
                             <button class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                         </div>
                     </div>
 
                     <div class="content-card" style="overflow: hidden;">
-                        <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=400" alt="Samosa" style="width: 100%; height: 180px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
+                        <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=400" alt="Samosa"
+                            style="width: 100%; height: 180px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
                         <h4 style="margin-bottom: var(--spacing-sm);">Vegetable Samosa</h4>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">Crispy pastry filled with spiced potatoes and peas</p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">
+                            Crispy pastry filled with spiced potatoes and peas</p>
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color);">$5.99</span>
+                            <span
+                                style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color);">$5.99</span>
                             <button class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                         </div>
                     </div>
 
                     <div class="content-card" style="overflow: hidden;">
-                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400" alt="Pepperoni Pizza" style="width: 100%; height: 180px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400"
+                            alt="Pepperoni Pizza"
+                            style="width: 100%; height: 180px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
                         <h4 style="margin-bottom: var(--spacing-sm);">Pepperoni Pizza</h4>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">Classic Italian pizza with premium pepperoni</p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">
+                            Classic Italian pizza with premium pepperoni</p>
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color);">$22.99</span>
+                            <span
+                                style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color);">$22.99</span>
                             <button class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                         </div>
                     </div>
 
                     <div class="content-card" style="overflow: hidden;">
-                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400" alt="Burger" style="width: 100%; height: 180px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400" alt="Burger"
+                            style="width: 100%; height: 180px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
                         <h4 style="margin-bottom: var(--spacing-sm);">Classic Burger</h4>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">Juicy beef patty with cheese, lettuce, and tomato</p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">
+                            Juicy beef patty with cheese, lettuce, and tomato</p>
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color);">$14.99</span>
+                            <span
+                                style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color);">$14.99</span>
                             <button class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                         </div>
                     </div>
 
                     <div class="content-card" style="overflow: hidden;">
-                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400" alt="Salad" style="width: 100%; height: 180px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400" alt="Salad"
+                            style="width: 100%; height: 180px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
                         <h4 style="margin-bottom: var(--spacing-sm);">Mediterranean Salad</h4>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">Fresh greens with feta, olives, and vinaigrette</p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">
+                            Fresh greens with feta, olives, and vinaigrette</p>
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color);">$12.99</span>
+                            <span
+                                style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color);">$12.99</span>
                             <button class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                         </div>
                     </div>
@@ -826,96 +915,130 @@
                     <div class="header-content">
                         <div>
                             <h2><i class="fas fa-gift"></i> Rewards & Loyalty</h2>
-                            <p style="color: var(--text-secondary); margin-top: var(--spacing-sm);">Earn points with every order and redeem exciting rewards</p>
+                            <p style="color: var(--text-secondary); margin-top: var(--spacing-sm);">Earn points with
+                                every order and redeem exciting rewards</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="content-card" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; text-align: center; padding: var(--spacing-xl);">
+                <div class="content-card"
+                    style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; text-align: center; padding: var(--spacing-xl);">
                     <i class="fas fa-trophy" style="font-size: 3rem; margin-bottom: var(--spacing-md);"></i>
                     <h3 style="margin-bottom: var(--spacing-sm);">Your Reward Points</h3>
-                    <div class="stat-value" style="font-size: 3.5rem; color: white; margin: var(--spacing-md) 0;">1,250+</div>
-                    <p style="opacity: 0.9; margin-bottom: var(--spacing-lg);">You need 150 more points for your next reward!</p>
-                    <button class="btn btn-outline" style="border-color: white; color: white;"><i class="fas fa-gift"></i> Redeem Now</button>
+                    <div class="stat-value" style="font-size: 3.5rem; color: white; margin: var(--spacing-md) 0;">1,250+
+                    </div>
+                    <p style="opacity: 0.9; margin-bottom: var(--spacing-lg);">You need 150 more points for your next
+                        reward!</p>
+                    <button class="btn btn-outline" style="border-color: white; color: white;"><i
+                            class="fas fa-gift"></i> Redeem Now</button>
                 </div>
 
                 <div style="margin-top: var(--spacing-xl);">
                     <h3 style="margin-bottom: var(--spacing-lg);"><i class="fas fa-award"></i> Available Rewards</h3>
                     <div class="content-grid">
                         <div class="content-card" style="border: 2px solid var(--primary-color);">
-                            <div style="background: linear-gradient(135deg, #FF6B35, #F7931E); padding: var(--spacing-xl); text-align: center; color: white; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                                <i class="fas fa-percentage" style="font-size: 2.5rem; margin-bottom: var(--spacing-sm);"></i>
+                            <div
+                                style="background: linear-gradient(135deg, #FF6B35, #F7931E); padding: var(--spacing-xl); text-align: center; color: white; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
+                                <i class="fas fa-percentage"
+                                    style="font-size: 2.5rem; margin-bottom: var(--spacing-sm);"></i>
                                 <h2 style="margin: 0;">20% OFF</h2>
                             </div>
                             <h4 style="margin-bottom: var(--spacing-sm);">First Order Discount</h4>
-                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">Get 20% discount on your next order above $30</p>
+                            <p
+                                style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">
+                                Get 20% discount on your next order above $30</p>
                             <div style="display: flex; justify-content: space-between; align-items: center;">
-                                <span style="font-weight: 700; color: var(--primary-color); font-size: 1.1rem;">500 Points</span>
+                                <span style="font-weight: 700; color: var(--primary-color); font-size: 1.1rem;">500
+                                    Points</span>
                                 <button class="btn btn-primary btn-sm">Redeem</button>
                             </div>
                         </div>
 
                         <div class="content-card" style="border: 2px solid #27AE60;">
-                            <div style="background: linear-gradient(135deg, #27AE60, #2ecc71); padding: var(--spacing-xl); text-align: center; color: white; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                                <i class="fas fa-truck" style="font-size: 2.5rem; margin-bottom: var(--spacing-sm);"></i>
+                            <div
+                                style="background: linear-gradient(135deg, #27AE60, #2ecc71); padding: var(--spacing-xl); text-align: center; color: white; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
+                                <i class="fas fa-truck"
+                                    style="font-size: 2.5rem; margin-bottom: var(--spacing-sm);"></i>
                                 <h2 style="margin: 0;">FREE DELIVERY</h2>
                             </div>
                             <h4 style="margin-bottom: var(--spacing-sm);">Free Delivery Pass</h4>
-                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">Get free delivery for your next 5 orders</p>
+                            <p
+                                style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">
+                                Get free delivery for your next 5 orders</p>
                             <div style="display: flex; justify-content: space-between; align-items: center;">
-                                <span style="font-weight: 700; color: var(--primary-color); font-size: 1.1rem;">300 Points</span>
+                                <span style="font-weight: 700; color: var(--primary-color); font-size: 1.1rem;">300
+                                    Points</span>
                                 <button class="btn btn-primary btn-sm">Redeem</button>
                             </div>
                         </div>
 
                         <div class="content-card" style="border: 2px solid #4895ef;">
-                            <div style="background: linear-gradient(135deg, #4cc9f0, #4895ef); padding: var(--spacing-xl); text-align: center; color: white; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                                <i class="fas fa-utensils" style="font-size: 2.5rem; margin-bottom: var(--spacing-sm);"></i>
+                            <div
+                                style="background: linear-gradient(135deg, #4cc9f0, #4895ef); padding: var(--spacing-xl); text-align: center; color: white; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
+                                <i class="fas fa-utensils"
+                                    style="font-size: 2.5rem; margin-bottom: var(--spacing-sm);"></i>
                                 <h2 style="margin: 0;">FREE MEAL</h2>
                             </div>
                             <h4 style="margin-bottom: var(--spacing-sm);">Complimentary Dish</h4>
-                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">Get one main course free with orders above $50</p>
+                            <p
+                                style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">
+                                Get one main course free with orders above $50</p>
                             <div style="display: flex; justify-content: space-between; align-items: center;">
-                                <span style="font-weight: 700; color: var(--primary-color); font-size: 1.1rem;">800 Points</span>
+                                <span style="font-weight: 700; color: var(--primary-color); font-size: 1.1rem;">800
+                                    Points</span>
                                 <button class="btn btn-primary btn-sm">Redeem</button>
                             </div>
                         </div>
 
                         <div class="content-card" style="border: 2px solid #f72585;">
-                            <div style="background: linear-gradient(135deg, #f72585, #b5179e); padding: var(--spacing-xl); text-align: center; color: white; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                                <i class="fas fa-crown" style="font-size: 2.5rem; margin-bottom: var(--spacing-sm);"></i>
+                            <div
+                                style="background: linear-gradient(135deg, #f72585, #b5179e); padding: var(--spacing-xl); text-align: center; color: white; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
+                                <i class="fas fa-crown"
+                                    style="font-size: 2.5rem; margin-bottom: var(--spacing-sm);"></i>
                                 <h2 style="margin: 0;">VIP PASS</h2>
                             </div>
                             <h4 style="margin-bottom: var(--spacing-sm);">Premium Membership</h4>
-                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">Get VIP status for 1 month with exclusive benefits</p>
+                            <p
+                                style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">
+                                Get VIP status for 1 month with exclusive benefits</p>
                             <div style="display: flex; justify-content: space-between; align-items: center;">
-                                <span style="font-weight: 700; color: var(--primary-color); font-size: 1.1rem;">1,200 Points</span>
+                                <span style="font-weight: 700; color: var(--primary-color); font-size: 1.1rem;">1,200
+                                    Points</span>
                                 <button class="btn btn-primary btn-sm">Redeem</button>
                             </div>
                         </div>
 
                         <div class="content-card" style="border: 2px solid #ffb703;">
-                            <div style="background: linear-gradient(135deg, #ffb703, #fb8500); padding: var(--spacing-xl); text-align: center; color: white; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                                <i class="fas fa-birthday-cake" style="font-size: 2.5rem; margin-bottom: var(--spacing-sm);"></i>
+                            <div
+                                style="background: linear-gradient(135deg, #ffb703, #fb8500); padding: var(--spacing-xl); text-align: center; color: white; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
+                                <i class="fas fa-birthday-cake"
+                                    style="font-size: 2.5rem; margin-bottom: var(--spacing-sm);"></i>
                                 <h2 style="margin: 0;">DESSERT</h2>
                             </div>
                             <h4 style="margin-bottom: var(--spacing-sm);">Free Dessert</h4>
-                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">Get a complimentary dessert with any order</p>
+                            <p
+                                style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">
+                                Get a complimentary dessert with any order</p>
                             <div style="display: flex; justify-content: space-between; align-items: center;">
-                                <span style="font-weight: 700; color: var(--primary-color); font-size: 1.1rem;">400 Points</span>
+                                <span style="font-weight: 700; color: var(--primary-color); font-size: 1.1rem;">400
+                                    Points</span>
                                 <button class="btn btn-primary btn-sm">Redeem</button>
                             </div>
                         </div>
 
                         <div class="content-card" style="border: 2px solid #06ffa5;">
-                            <div style="background: linear-gradient(135deg, #06ffa5, #00d9ff); padding: var(--spacing-xl); text-align: center; color: white; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
+                            <div
+                                style="background: linear-gradient(135deg, #06ffa5, #00d9ff); padding: var(--spacing-xl); text-align: center; color: white; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
                                 <i class="fas fa-star" style="font-size: 2.5rem; margin-bottom: var(--spacing-sm);"></i>
                                 <h2 style="margin: 0;">PRIORITY</h2>
                             </div>
                             <h4 style="margin-bottom: var(--spacing-sm);">Fast Track Service</h4>
-                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">Priority order processing for next 10 orders</p>
+                            <p
+                                style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-md);">
+                                Priority order processing for next 10 orders</p>
                             <div style="display: flex; justify-content: space-between; align-items: center;">
-                                <span style="font-weight: 700; color: var(--primary-color); font-size: 1.1rem;">600 Points</span>
+                                <span style="font-weight: 700; color: var(--primary-color); font-size: 1.1rem;">600
+                                    Points</span>
                                 <button class="btn btn-primary btn-sm">Redeem</button>
                             </div>
                         </div>
@@ -929,13 +1052,15 @@
                     <div class="header-content">
                         <div>
                             <h2><i class="fas fa-user"></i> Profile Settings</h2>
-                            <p style="color: var(--text-secondary); margin-top: var(--spacing-sm);">Manage your personal information and preferences</p>
+                            <p style="color: var(--text-secondary); margin-top: var(--spacing-sm);">Manage your personal
+                                information and preferences</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="content-card">
-                    <h3 style="margin-bottom: var(--spacing-lg);"><i class="fas fa-id-card"></i> Personal Information</h3>
+                    <h3 style="margin-bottom: var(--spacing-lg);"><i class="fas fa-id-card"></i> Personal Information
+                    </h3>
                     <form class="form-grid">
                         <div class="form-group">
                             <label class="form-label">Full Name</label>
@@ -943,7 +1068,8 @@
                         </div>
                         <div class="form-group">
                             <label class="form-label">Email Address</label>
-                            <input type="email" class="form-input" value="john.doe@example.com" placeholder="Enter your email">
+                            <input type="email" class="form-input" value="john.doe@example.com"
+                                placeholder="Enter your email">
                         </div>
                         <div class="form-group">
                             <label class="form-label">Phone Number</label>
@@ -955,70 +1081,95 @@
                         </div>
                         <div class="form-group" style="grid-column: 1 / -1;">
                             <label class="form-label">Delivery Address</label>
-                            <textarea class="form-input" rows="3" placeholder="Enter your complete address">123 Main Street, Apartment 4B, New York, NY 10001</textarea>
+                            <textarea class="form-input" rows="3"
+                                placeholder="Enter your complete address">123 Main Street, Apartment 4B, New York, NY 10001</textarea>
                         </div>
                         <div class="form-group" style="grid-column: 1 / -1;">
-                            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save Changes</button>
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save
+                                Changes</button>
                         </div>
                     </form>
                 </div>
 
                 <div class="content-grid" style="margin-top: var(--spacing-xl);">
                     <div class="content-card">
-                        <h3 style="margin-bottom: var(--spacing-lg);"><i class="fas fa-leaf"></i> Dietary Preferences</h3>
+                        <h3 style="margin-bottom: var(--spacing-lg);"><i class="fas fa-leaf"></i> Dietary Preferences
+                        </h3>
                         <div style="display: flex; flex-wrap: wrap; gap: var(--spacing-sm);">
-                            <button class="btn btn-outline btn-sm" style="border-color: var(--success-color); color: var(--success-color);"><i class="fas fa-check-circle"></i> Vegetarian</button>
+                            <button class="btn btn-outline btn-sm"
+                                style="border-color: var(--success-color); color: var(--success-color);"><i
+                                    class="fas fa-check-circle"></i> Vegetarian</button>
                             <button class="btn btn-outline btn-sm"><i class="far fa-circle"></i> Vegan</button>
-                            <button class="btn btn-outline btn-sm" style="border-color: var(--success-color); color: var(--success-color);"><i class="fas fa-check-circle"></i> Gluten-Free</button>
+                            <button class="btn btn-outline btn-sm"
+                                style="border-color: var(--success-color); color: var(--success-color);"><i
+                                    class="fas fa-check-circle"></i> Gluten-Free</button>
                             <button class="btn btn-outline btn-sm"><i class="far fa-circle"></i> Dairy-Free</button>
                             <button class="btn btn-outline btn-sm"><i class="far fa-circle"></i> Nut Allergy</button>
-                            <button class="btn btn-outline btn-sm" style="border-color: var(--success-color); color: var(--success-color);"><i class="fas fa-check-circle"></i> Low Carb</button>
+                            <button class="btn btn-outline btn-sm"
+                                style="border-color: var(--success-color); color: var(--success-color);"><i
+                                    class="fas fa-check-circle"></i> Low Carb</button>
                             <button class="btn btn-outline btn-sm"><i class="far fa-circle"></i> Halal</button>
                             <button class="btn btn-outline btn-sm"><i class="far fa-circle"></i> Kosher</button>
                         </div>
                     </div>
 
                     <div class="content-card">
-                        <h3 style="margin-bottom: var(--spacing-lg);"><i class="fas fa-credit-card"></i> Payment Methods</h3>
+                        <h3 style="margin-bottom: var(--spacing-lg);"><i class="fas fa-credit-card"></i> Payment Methods
+                        </h3>
                         <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
-                            <div style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: center;">
+                            <div
+                                style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: center;">
                                 <div style="display: flex; align-items: center; gap: var(--spacing-md);">
                                     <i class="fab fa-cc-visa" style="font-size: 2rem; color: #1A1F71;"></i>
                                     <div>
                                         <div style="font-weight: 600;">â€¢â€¢â€¢â€¢ 4242</div>
-                                        <div style="font-size: 0.85rem; color: var(--text-secondary);">Expires 12/26</div>
+                                        <div style="font-size: 0.85rem; color: var(--text-secondary);">Expires 12/26
+                                        </div>
                                     </div>
                                 </div>
-                                <span class="badge" style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.75rem;">Default</span>
+                                <span class="badge"
+                                    style="background: var(--success-color); color: white; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-full); font-size: 0.75rem;">Default</span>
                             </div>
-                            <div style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: center;">
+                            <div
+                                style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: center;">
                                 <div style="display: flex; align-items: center; gap: var(--spacing-md);">
                                     <i class="fab fa-cc-mastercard" style="font-size: 2rem; color: #EB001B;"></i>
                                     <div>
                                         <div style="font-weight: 600;">â€¢â€¢â€¢â€¢ 8888</div>
-                                        <div style="font-size: 0.85rem; color: var(--text-secondary);">Expires 03/27</div>
+                                        <div style="font-size: 0.85rem; color: var(--text-secondary);">Expires 03/27
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-outline btn-sm" style="width: 100%;"><i class="fas fa-plus"></i> Add Payment Method</button>
+                            <button class="btn btn-outline btn-sm" style="width: 100%;"><i class="fas fa-plus"></i> Add
+                                Payment Method</button>
                         </div>
                     </div>
 
                     <div class="content-card">
-                        <h3 style="margin-bottom: var(--spacing-lg);"><i class="fas fa-map-marker-alt"></i> Saved Addresses</h3>
+                        <h3 style="margin-bottom: var(--spacing-lg);"><i class="fas fa-map-marker-alt"></i> Saved
+                            Addresses</h3>
                         <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
-                            <div style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md);">
-                                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: var(--spacing-xs);">
+                            <div
+                                style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md);">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: start; margin-bottom: var(--spacing-xs);">
                                     <div style="font-weight: 600;"><i class="fas fa-home"></i> Home</div>
-                                    <span class="badge" style="background: var(--primary-color); color: white; padding: 2px 8px; border-radius: var(--radius-full); font-size: 0.75rem;">Primary</span>
+                                    <span class="badge"
+                                        style="background: var(--primary-color); color: white; padding: 2px 8px; border-radius: var(--radius-full); font-size: 0.75rem;">Primary</span>
                                 </div>
-                                <div style="font-size: 0.9rem; color: var(--text-secondary);">123 Main Street, Apt 4B<br>New York, NY 10001</div>
+                                <div style="font-size: 0.9rem; color: var(--text-secondary);">123 Main Street, Apt
+                                    4B<br>New York, NY 10001</div>
                             </div>
-                            <div style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md);">
-                                <div style="font-weight: 600; margin-bottom: var(--spacing-xs);"><i class="fas fa-briefcase"></i> Office</div>
-                                <div style="font-size: 0.9rem; color: var(--text-secondary);">456 Business Ave, Suite 200<br>New York, NY 10022</div>
+                            <div
+                                style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md);">
+                                <div style="font-weight: 600; margin-bottom: var(--spacing-xs);"><i
+                                        class="fas fa-briefcase"></i> Office</div>
+                                <div style="font-size: 0.9rem; color: var(--text-secondary);">456 Business Ave, Suite
+                                    200<br>New York, NY 10022</div>
                             </div>
-                            <button class="btn btn-outline btn-sm" style="width: 100%;"><i class="fas fa-plus"></i> Add New Address</button>
+                            <button class="btn btn-outline btn-sm" style="width: 100%;"><i class="fas fa-plus"></i> Add
+                                New Address</button>
                         </div>
                     </div>
                 </div>
@@ -1030,24 +1181,29 @@
                     <div class="header-content">
                         <div>
                             <h2><i class="fas fa-cog"></i> Settings</h2>
-                            <p style="color: var(--text-secondary); margin-top: var(--spacing-sm);">Customize your experience and manage account settings</p>
+                            <p style="color: var(--text-secondary); margin-top: var(--spacing-sm);">Customize your
+                                experience and manage account settings</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="content-card">
                     <h3 style="margin-bottom: var(--spacing-lg);"><i class="fas fa-palette"></i> Appearance</h3>
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md) 0; border-bottom: 1px solid var(--border-color);">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md) 0; border-bottom: 1px solid var(--border-color);">
                         <div>
                             <div style="font-weight: 600;">Dark Mode</div>
-                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">Toggle between light and dark themes</p>
+                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">Toggle between light
+                                and dark themes</p>
                         </div>
                         <button id="settingsThemeToggle" class="btn btn-outline btn-sm">Toggle</button>
                     </div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md) 0;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md) 0;">
                         <div>
                             <div style="font-weight: 600;">Language Direction</div>
-                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">Switch between LTR and RTL layouts</p>
+                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">Switch between LTR
+                                and RTL layouts</p>
                         </div>
                         <button id="settingsRtlToggle" class="btn btn-outline btn-sm">RTL/LTR</button>
                     </div>
@@ -1055,56 +1211,71 @@
 
                 <div class="content-card" style="margin-top: var(--spacing-lg);">
                     <h3 style="margin-bottom: var(--spacing-lg);"><i class="fas fa-bell"></i> Notifications</h3>
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md) 0; border-bottom: 1px solid var(--border-color);">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md) 0; border-bottom: 1px solid var(--border-color);">
                         <div>
                             <div style="font-weight: 600;">Order Updates</div>
-                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">Get notified about order status changes</p>
+                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">Get notified about
+                                order status changes</p>
                         </div>
                         <input type="checkbox" checked style="width: 20px; height: 20px; cursor: pointer;">
                     </div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md) 0; border-bottom: 1px solid var(--border-color);">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md) 0; border-bottom: 1px solid var(--border-color);">
                         <div>
                             <div style="font-weight: 600;">Promotional Emails</div>
-                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">Receive special offers and deals</p>
+                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">Receive special
+                                offers and deals</p>
                         </div>
                         <input type="checkbox" checked style="width: 20px; height: 20px; cursor: pointer;">
                     </div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md) 0; border-bottom: 1px solid var(--border-color);">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md) 0; border-bottom: 1px solid var(--border-color);">
                         <div>
                             <div style="font-weight: 600;">SMS Alerts</div>
-                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">Get text messages for delivery updates</p>
+                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">Get text messages for
+                                delivery updates</p>
                         </div>
                         <input type="checkbox" style="width: 20px; height: 20px; cursor: pointer;">
                     </div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md) 0;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md) 0;">
                         <div>
                             <div style="font-weight: 600;">Push Notifications</div>
-                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">Enable browser notifications</p>
+                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">Enable browser
+                                notifications</p>
                         </div>
                         <input type="checkbox" checked style="width: 20px; height: 20px; cursor: pointer;">
                     </div>
                 </div>
 
                 <div class="content-card" style="margin-top: var(--spacing-lg);">
-                    <h3 style="margin-bottom: var(--spacing-lg);"><i class="fas fa-shield-alt"></i> Security & Privacy</h3>
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md) 0; border-bottom: 1px solid var(--border-color);">
+                    <h3 style="margin-bottom: var(--spacing-lg);"><i class="fas fa-shield-alt"></i> Security & Privacy
+                    </h3>
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md) 0; border-bottom: 1px solid var(--border-color);">
                         <div>
                             <div style="font-weight: 600;">Change Password</div>
-                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">Update your account password</p>
+                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">Update your account
+                                password</p>
                         </div>
                         <button class="btn btn-outline btn-sm">Change</button>
                     </div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md) 0; border-bottom: 1px solid var(--border-color);">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md) 0; border-bottom: 1px solid var(--border-color);">
                         <div>
                             <div style="font-weight: 600;">Two-Factor Authentication</div>
-                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">Add an extra layer of security</p>
+                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">Add an extra layer of
+                                security</p>
                         </div>
                         <button class="btn btn-outline btn-sm">Enable</button>
                     </div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md) 0;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md) 0;">
                         <div>
                             <div style="font-weight: 600; color: var(--error-color);">Delete Account</div>
-                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">Permanently delete your account and data</p>
+                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">Permanently delete
+                                your account and data</p>
                         </div>
                         <button class="btn btn-sm" style="background: var(--error-color); color: white;">Delete</button>
                     </div>
@@ -1121,11 +1292,11 @@
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const tabName = link.getAttribute('data-tab');
-                
+
                 // Remove active class from all links and tabs
                 document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
                 document.querySelectorAll('.tab-section').forEach(t => t.classList.remove('active'));
-                
+
                 // Add active class to clicked link and corresponding tab
                 link.classList.add('active');
                 document.getElementById(tabName + 'Tab').classList.add('active');
@@ -1244,7 +1415,7 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        ticks: { callback: function(value) { return '$' + value; } }
+                        ticks: { callback: function (value) { return '$' + value; } }
                     }
                 },
                 plugins: { legend: { display: false } }
@@ -1369,7 +1540,7 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        ticks: { callback: function(value) { return value + ' min'; } }
+                        ticks: { callback: function (value) { return value + ' min'; } }
                     }
                 },
                 plugins: { legend: { display: false } }
