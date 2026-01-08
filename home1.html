@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TasteIT - Exquisite Culinary Experience</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Mobile Menu Behavior */
+        #mobileMenu {
+            display: none;
+        }
+
+        #mobileMenu.show {
+            display: block !important;
+        }
+
+        /* Desktop Menu Visibility */
+        @media (min-width: 769px) {
+            #desktopMenu {
+                display: flex !important;
+            }
+
+            #mobileMenuButton {
+                display: none !important;
+            }
+        }
+
+        /* Mobile Menu Button Visibility */
+        @media (max-width: 768px) {
+            #mobileMenuButton {
+                display: block !important;
+            }
+
+            #desktopMenu {
+                display: none !important;
+            }
+        }
+
+        /* Hero Section with Parallax */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.85), rgba(44, 62, 80, 0.85)),
+                url('https://images.unsplash.com/photo-1551218808-94e220e084d2?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            animation: zoomIn 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes zoomIn {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 var(--spacing-lg);
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: var(--spacing-lg);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-2xl);
+            opacity: 0.95;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: var(--spacing-lg);
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        /* Featured Section */
+        .featured-section {
+            padding: var(--spacing-3xl) 0;
+            background: var(--bg-secondary);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+            position: relative;
+            /* display: inline-block; */
+            /* left: 50%; */
+            /* transform: translateX(-50%); */
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: var(--radius-full);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        /* Dish Cards */
+        .dish-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-2xl);
+        }
+
+        .dish-card {
+            position: relative;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: all var(--transition-base);
+            cursor: pointer;
+        }
+
+        .dish-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .dish-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+
+        .dish-card:hover .dish-image {
+            transform: scale(1.1);
+        }
+
+        .dish-content {
+            padding: var(--spacing-lg);
+            background: var(--bg-primary);
+        }
+
+        .dish-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .dish-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .dish-price {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .dish-description {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .dish-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent-color);
+            color: var(--secondary-dark);
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: 0.875rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: var(--spacing-3xl) 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-xl);
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: var(--spacing-lg);
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+            opacity: 0.9;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-2xl);
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            aspect-ratio: 1;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.15);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            opacity: 0;
+            transition: opacity var(--transition-base);
+            display: flex;
+            align-items: flex-end;
+            padding: var(--spacing-lg);
+            color: white;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Testimonials */
+        .testimonial-slider {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-2xl);
+        }
+
+        .testimonial-card {
+            background: var(--bg-primary);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            transition: all var(--transition-base);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .testimonial-quote {
+            font-size: 3rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: var(--spacing-lg);
+            position: relative;
+            z-index: 1;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
+        }
+
+        .testimonial-info h4 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-info p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .testimonial-stars {
+            color: var(--accent-color);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Newsletter */
+        .newsletter-section {
+            padding: var(--spacing-3xl) 0;
+            background: var(--bg-secondary);
+        }
+
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-xl);
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: var(--spacing-md) var(--spacing-lg);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-full);
+            font-size: 1rem;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--secondary-dark);
+            color: white;
+            padding: var(--spacing-3xl) 0 var(--spacing-lg);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-2xl);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .footer-section h3 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: color var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-base);
+        }
+
+        .social-link:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="flex justify-between items-center" style="padding: 1rem 0;">
+                <div class="navbar-brand">
+                    <i class="fas fa-utensils"></i>
+                    TasteIT
+                </div>
+
+                <!-- Desktop Menu -->
+                <ul class="navbar-nav" style="display: none;" id="desktopMenu">
+                    <li class="dropdown">
+                        <a href="#" class="navbar-link dropdown-toggle">
+                            Home
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="home1.html" class="dropdown-item">Home 1</a>
+                            <a href="index.html" class="dropdown-item">Home 2</a>
+                        </div>
+                    </li>
+                    <li><a href="menu.html" class="navbar-link">Menu</a></li>
+                    <li><a href="order.html" class="navbar-link">Order</a></li>
+                    <li><a href="contact.html" class="navbar-link">Contact</a></li>
+                    <li><a href="blog.html" class="navbar-link">Blog</a></li>
+                    <li><a href="faq.html" class="navbar-link">FAQ</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="navbar-link dropdown-toggle">
+                            Dashboard
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="user-dashboard.html" class="dropdown-item">User Dashboard</a>
+                            <a href="admin-dashboard.html" class="dropdown-item">Admin Dashboard</a>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- Action Buttons -->
+                <div class="flex items-center gap-md">
+                    <!-- Theme Toggle -->
+                    <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme"
+                        style="width: 50px; height: 26px; background: var(--border-color); border-radius: 13px; border: none; cursor: pointer; position: relative;">
+                        <span class="theme-toggle-slider"
+                            style="position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; background: white; border-radius: 50%; transition: transform 0.3s;"></span>
+                    </button>
+
+                    <button id="rtlToggle" class="btn-sm"
+                        style="background: transparent; border: 2px solid var(--border-color); border-radius: var(--radius-full); padding: 0.5rem; cursor: pointer; color: var(--text-primary);">
+                        <i class="fas fa-globe"></i>
+                    </button>
+
+                    <!-- Login Button -->
+                    <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobileMenuButton" class="btn-sm"
+                        style="background: transparent; border: 2px solid var(--border-color); border-radius: var(--radius-md); padding: 0.5rem; cursor: pointer; display: none;">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden"
+            style="background: var(--bg-primary); border-top: 1px solid var(--border-color); padding: var(--spacing-lg); display: none;">
+            <ul style="list-style: none;">
+                <li style="margin-bottom: var(--spacing-sm);"><a href="home1.html" class="navbar-link">Home 1</a></li>
+                <li style="margin-bottom: var(--spacing-sm);"><a href="index.html" class="navbar-link">Home 2</a></li>
+                <li style="margin-bottom: var(--spacing-sm);"><a href="menu.html" class="navbar-link">Menu</a></li>
+                <li style="margin-bottom: var(--spacing-sm);"><a href="order.html" class="navbar-link">Order</a></li>
+                <li style="margin-bottom: var(--spacing-sm);"><a href="contact.html" class="navbar-link">Contact</a>
+                </li>
+                <li style="margin-bottom: var(--spacing-sm);"><a href="blog.html" class="navbar-link">Blog</a></li>
+                <li style="margin-bottom: var(--spacing-sm);"><a href="faq.html" class="navbar-link">FAQ</a></li>
+                <li style="margin-bottom: var(--spacing-sm);"><a href="user-dashboard.html" class="navbar-link">User
+                        Dashboard</a></li>
+                <li style="margin-bottom: var(--spacing-sm);"><a href="admin-dashboard.html" class="navbar-link">Admin
+                        Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-bg" data-parallax="0.5"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Experience Culinary Excellence</h1>
+            <p class="hero-subtitle">Where every dish tells a story of passion, flavor, and artistry</p>
+            <div class="hero-buttons">
+                <a href="menu.html" class="btn btn-primary btn-lg">Explore Menu</a>
+                <a href="order.html" class="btn btn-outline btn-lg"
+                    style="background: transparent; border: 2px solid white; color: white;">Order Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item scroll-reveal">
+                    <div class="stat-icon"><i class="fas fa-award"></i></div>
+                    <div class="stat-number" data-counter="15" data-suffix="+">0</div>
+                    <div class="stat-label">Awards Won</div>
+                </div>
+                <div class="stat-item scroll-reveal">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-number" data-counter="50000" data-suffix="+">0</div>
+                    <div class="stat-label">Happy Customers</div>
+                </div>
+                <div class="stat-item scroll-reveal">
+                    <div class="stat-icon"><i class="fas fa-utensils"></i></div>
+                    <div class="stat-number" data-counter="200" data-suffix="+">0</div>
+                    <div class="stat-label">Dishes</div>
+                </div>
+                <div class="stat-item scroll-reveal">
+                    <div class="stat-icon"><i class="fas fa-star"></i></div>
+                    <div class="stat-number" data-counter="4.9" data-suffix="+">0</div>
+                    <div class="stat-label">Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Dishes -->
+    <section class="featured-section">
+        <div class="container">
+            <h2 class="section-title">Signature Creations</h2>
+            <p class="section-subtitle">Handcrafted dishes that define our culinary identity</p>
+
+            <div class="dish-grid">
+                <div class="dish-card scroll-reveal">
+                    <span class="dish-badge">Chef's Special</span>
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80"
+                        alt="Truffle Risotto" class="dish-image">
+                    <div class="dish-content">
+                        <div class="dish-header">
+                            <h3 class="dish-name">Truffle Risotto</h3>
+                            <span class="dish-price">$32</span>
+                        </div>
+                        <p class="dish-description">Creamy Arborio rice with black truffle, parmesan, and wild mushrooms
+                        </p>
+                        <button class="btn btn-primary" style="width: 100%;">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="dish-card scroll-reveal">
+                    <span class="dish-badge">Popular</span>
+                    <img src="https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=800&q=80"
+                        alt="Grilled Salmon" class="dish-image">
+                    <div class="dish-content">
+                        <div class="dish-header">
+                            <h3 class="dish-name">Grilled Salmon</h3>
+                            <span class="dish-price">$38</span>
+                        </div>
+                        <p class="dish-description">Wild-caught Atlantic salmon with lemon herb butter and seasonal
+                            vegetables</p>
+                        <button class="btn btn-primary" style="width: 100%;">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="dish-card scroll-reveal">
+                    <span class="dish-badge">New</span>
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=800&q=80" alt="Wagyu Steak"
+                        class="dish-image">
+                    <div class="dish-content">
+                        <div class="dish-header">
+                            <h3 class="dish-name">Wagyu Steak</h3>
+                            <span class="dish-price">$65</span>
+                        </div>
+                        <p class="dish-description">Premium A5 Wagyu beef with truffle mashed potatoes and red wine
+                            reduction</p>
+                        <button class="btn btn-primary" style="width: 100%;">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="dish-card scroll-reveal">
+                    <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=800&q=80"
+                        alt="Lobster Thermidor" class="dish-image">
+                    <div class="dish-content">
+                        <div class="dish-header">
+                            <h3 class="dish-name">Lobster Thermidor</h3>
+                            <span class="dish-price">$48</span>
+                        </div>
+                        <p class="dish-description">Fresh lobster in creamy cognac sauce with Gruyère cheese</p>
+                        <button class="btn btn-primary" style="width: 100%;">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="dish-card scroll-reveal">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80"
+                        alt="Chocolate Soufflé" class="dish-image">
+                    <div class="dish-content">
+                        <div class="dish-header">
+                            <h3 class="dish-name">Chocolate Soufflé</h3>
+                            <span class="dish-price">$18</span>
+                        </div>
+                        <p class="dish-description">Decadent dark chocolate soufflé with vanilla bean ice cream</p>
+                        <button class="btn btn-primary" style="width: 100%;">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="dish-card scroll-reveal">
+                    <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=800&q=80" alt="Tiramisu"
+                        class="dish-image">
+                    <div class="dish-content">
+                        <div class="dish-header">
+                            <h3 class="dish-name">Classic Tiramisu</h3>
+                            <span class="dish-price">$14</span>
+                        </div>
+                        <p class="dish-description">Traditional Italian dessert with espresso-soaked ladyfingers and
+                            mascarpone</p>
+                        <button class="btn btn-primary" style="width: 100%;">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="featured-section" style="background: var(--bg-primary);">
+        <div class="container">
+            <h2 class="section-title">Visual Feast</h2>
+            <p class="section-subtitle">A glimpse into our culinary artistry</p>
+
+            <div class="gallery-grid">
+                <div class="gallery-item scroll-reveal">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80"
+                        alt="Restaurant Interior">
+                    <div class="gallery-overlay">
+                        <span>Elegant Ambiance</span>
+                    </div>
+                </div>
+                <div class="gallery-item scroll-reveal">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80"
+                        alt="Fine Dining">
+                    <div class="gallery-overlay">
+                        <span>Fine Dining Experience</span>
+                    </div>
+                </div>
+                <div class="gallery-item scroll-reveal">
+                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80" alt="Chef Cooking">
+                    <div class="gallery-overlay">
+                        <span>Master Chefs at Work</span>
+                    </div>
+                </div>
+                <div class="gallery-item scroll-reveal">
+                    <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=600&q=80" alt="Kitchen">
+                    <div class="gallery-overlay">
+                        <span>State-of-the-Art Kitchen</span>
+                    </div>
+                </div>
+                <div class="gallery-item scroll-reveal">
+                    <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=600&q=80"
+                        alt="Wine Selection">
+                    <div class="gallery-overlay">
+                        <span>Premium Wine Collection</span>
+                    </div>
+                </div>
+                <div class="gallery-item scroll-reveal">
+                    <img src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=600&q=80" alt="Desserts">
+                    <div class="gallery-overlay">
+                        <span>Artisan Desserts</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="featured-section">
+        <div class="container">
+            <h2 class="section-title">What Our Guests Say</h2>
+            <p class="section-subtitle">Real experiences from our valued customers</p>
+
+            <div class="testimonial-slider">
+                <div class="testimonial-card scroll-reveal">
+                    <i class="fas fa-quote-left testimonial-quote"></i>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"An absolutely divine dining experience! The truffle risotto was
+                        perfection, and the ambiance made our anniversary unforgettable. TasteIT has become our go-to
+                        restaurant for special occasions."</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sophia Martinez"
+                            class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Sophia Martinez</h4>
+                            <p>Food Critic</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card scroll-reveal">
+                    <i class="fas fa-quote-left testimonial-quote"></i>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The Wagyu steak was cooked to absolute perfection. Every bite melted in
+                        my mouth. The service was impeccable, and the wine pairing recommendations were spot on. Highly
+                        recommended!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="James Anderson"
+                            class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>James Anderson</h4>
+                            <p>Business Executive</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card scroll-reveal">
+                    <i class="fas fa-quote-left testimonial-quote"></i>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"TasteIT offers an exceptional culinary journey. The chocolate soufflé
+                        is the best I've had anywhere in the world. The attention to detail in every dish is remarkable.
+                        A must-visit for food lovers!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Priya Sharma"
+                            class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Priya Sharma</h4>
+                            <p>Travel Blogger</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card scroll-reveal">
+                    <i class="fas fa-quote-left testimonial-quote"></i>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Outstanding service and incredible flavors! The seafood platter was
+                        fresh and beautifully presented. The chef's creativity shines through every dish. This place
+                        never disappoints!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="David Thompson"
+                            class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>David Thompson</h4>
+                            <p>Culinary Enthusiast</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card scroll-reveal">
+                    <i class="fas fa-quote-left testimonial-quote"></i>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"A hidden gem in the city! The pasta dishes are authentic and reminds me
+                        of my travels in Italy. The staff is friendly and knowledgeable. Will definitely be back!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Isabella Romano"
+                            class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Isabella Romano</h4>
+                            <p>Restaurant Owner</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card scroll-reveal">
+                    <i class="fas fa-quote-left testimonial-quote"></i>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="testimonial-text">"Exceptional food quality and presentation. The lamb chops were tender
+                        and flavorful. Great ambiance for a romantic dinner. Pricing is fair for the quality you get."
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/58.jpg" alt="Marcus Williams"
+                            class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Marcus Williams</h4>
+                            <p>Food Photographer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card scroll-reveal">
+                    <i class="fas fa-quote-left testimonial-quote"></i>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Best vegetarian options I've found! The paneer tikka masala is
+                        heavenly. They accommodate dietary restrictions well. The desserts are also amazing. Highly
+                        recommend!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/72.jpg" alt="Aisha Patel"
+                            class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Aisha Patel</h4>
+                            <p>Wellness Coach</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content scroll-reveal">
+                <h2 class="section-title">Stay Updated</h2>
+                <p class="section-subtitle">Subscribe to receive exclusive offers, new menu updates, and culinary
+                    insights</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn btn-primary btn-lg">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3><i class="fas fa-utensils"></i> TasteIT</h3>
+                    <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.8;">Experience culinary excellence with
+                        our carefully crafted dishes made from the finest ingredients. Where passion meets flavor.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="order.html">Order Online</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Opening Hours</h3>
+                    <ul class="footer-links">
+                        <li style="display: flex; justify-content: space-between; color: rgba(255, 255, 255, 0.7);">
+                            <span>Monday - Thursday</span>
+                            <span>11am - 10pm</span>
+                        </li>
+                        <li style="display: flex; justify-content: space-between; color: rgba(255, 255, 255, 0.7);">
+                            <span>Friday - Saturday</span>
+                            <span>11am - 11pm</span>
+                        </li>
+                        <li style="display: flex; justify-content: space-between; color: rgba(255, 255, 255, 0.7);">
+                            <span>Sunday</span>
+                            <span>12pm - 9pm</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li style="color: rgba(255, 255, 255, 0.7);"><i class="fas fa-map-marker-alt"
+                                style="margin-right: 10px; color: var(--primary-color);"></i>123 Gourmet Street, Food
+                            District</li>
+                        <li style="color: rgba(255, 255, 255, 0.7);"><i class="fas fa-phone"
+                                style="margin-right: 10px; color: var(--primary-color);"></i>+1 (555) 123-4567</li>
+                        <li style="color: rgba(255, 255, 255, 0.7);"><i class="fas fa-envelope"
+                                style="margin-right: 10px; color: var(--primary-color);"></i>info@tasteit.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 TasteIT. All rights reserved. Crafted with <i class="fas fa-heart"
+                        style="color: var(--primary-color);"></i> for food lovers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/rtl-toggle.js"></script>
+
+    <script>
+
+        // Newsletter form submission
+        document.querySelector('.newsletter-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = e.target.querySelector('input').value;
+            window.TasteIT.showToast('Thank you for subscribing! Check your email for exclusive offers.', 'success');
+            e.target.reset();
+        });
+    </script>
+</body>
+
+</html>

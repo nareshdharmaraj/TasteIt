@@ -15,23 +15,23 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
+            /* handled by scale script */
         }
 
         .auth-container {
             display: flex;
             height: 100vh;
+            width: 100vw;
             position: relative;
             overflow: hidden;
+            transform-origin: top left;
         }
 
-        /* RTL Support for container */
-        [dir="rtl"] .auth-form-container {
-            order: 2;
+        [dir="rtl"] .auth-container {
+            transform-origin: top right;
         }
 
-        [dir="rtl"] .auth-visual {
-            order: 1;
-        }
+
 
         /* Right Side - Image/Branding (Flipped from login) */
         .auth-visual {
@@ -48,7 +48,7 @@
             padding: var(--spacing-3xl);
             position: relative;
             overflow: hidden;
-            order: 2;
+            overflow: hidden;
         }
 
         .auth-visual::before {
@@ -129,12 +129,14 @@
         .auth-form-container {
             flex: 1;
             display: flex;
+            flex-direction: column;
+            /* better for scrolling */
             align-items: center;
             justify-content: center;
+            /* falls back if content small */
             padding: var(--spacing-3xl);
             background: var(--bg-primary);
             position: relative;
-            order: 1;
             overflow-y: auto;
         }
 
@@ -143,6 +145,8 @@
             max-width: 450px;
             animation: fadeInLeft 0.6s ease-out;
             padding: var(--spacing-lg) 0;
+            margin: auto;
+            /* Corrects top overflow when content is tall */
         }
 
         .auth-header {
@@ -536,7 +540,7 @@
         .rtl-toggle-auth {
             position: absolute;
             top: var(--spacing-lg);
-            right: 70px;
+            right: var(--spacing-lg);
             background: transparent;
             border: 2px solid var(--border-color);
             border-radius: var(--radius-full);
@@ -548,7 +552,7 @@
 
         [dir="rtl"] .rtl-toggle-auth {
             right: auto;
-            left: 70px;
+            left: var(--spacing-lg);
         }
 
         /* Password Strength */
@@ -714,13 +718,13 @@
 
             .rtl-toggle-auth {
                 top: 16px;
-                right: 70px;
+                right: 16px;
                 padding: 0.4rem;
             }
 
             [dir="rtl"] .rtl-toggle-auth {
                 right: auto;
-                left: 70px;
+                left: 16px;
             }
 
             .auth-header h2 {
@@ -773,11 +777,12 @@
                 <span>Back to Home</span>
             </a>
 
-            <button id="themeToggle" class="theme-toggle-auth" aria-label="Toggle theme">
-                <span class="theme-toggle-slider-auth"></span>
-            </button>
+            <!-- Theme Toggle Removed -->
+            <!-- <button id="themeToggle" class="theme-toggle-auth" aria-label="Toggle theme">
+               <div class="theme-toggle-slider-auth"></div>
+            </button> -->
 
-            <button id="rtlToggle" class="rtl-toggle-auth" aria-label="Toggle RTL" style="color: var(--text-primary);">
+            <button id="rtlToggle" class="rtl-toggle-auth" aria-label="Toggle RTL">
                 <i class="fas fa-globe"></i>
             </button>
 
@@ -1002,19 +1007,7 @@
     <script src="js/main.js"></script>
 
     <script>
-        // Theme Toggle
-        document.getElementById('themeToggle').addEventListener('click', () => {
-            document.body.classList.toggle('dark');
-            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
-        });
 
-        // RTL Toggle
-        document.getElementById('rtlToggle').addEventListener('click', () => {
-            const html = document.documentElement;
-            const currentDir = html.getAttribute('dir');
-            html.setAttribute('dir', currentDir === 'rtl' ? 'ltr' : 'rtl');
-            localStorage.setItem('direction', currentDir === 'rtl' ? 'ltr' : 'rtl');
-        });
 
         // Load saved preferences
         window.addEventListener('DOMContentLoaded', () => {
@@ -1029,6 +1022,28 @@
                 document.documentElement.setAttribute('dir', 'rtl');
             }
         });
+
+        // Scale to Fit Logic
+        function scaleToFit() {
+            const container = document.querySelector('.auth-container');
+            const availableHeight = window.innerHeight;
+            // Register page has more content, so minHeight might be larger
+            const minHeight = 950; // px, force scale to fit content
+
+            if (availableHeight < minHeight) {
+                const scale = availableHeight / minHeight;
+                container.style.transform = `scale(${scale})`;
+                container.style.width = `${100 / scale}%`;
+                container.style.height = `${100 / scale}vh`;
+            } else {
+                container.style.transform = 'scale(1)';
+                container.style.width = '100%';
+                container.style.height = '100vh';
+            }
+        }
+
+        window.addEventListener('resize', scaleToFit);
+        window.addEventListener('load', scaleToFit);
 
         let currentStep = 1;
         const totalSteps = 3;
@@ -1209,6 +1224,7 @@
             }, 2000);
         }
     </script>
+    <script src="js/rtl-toggle.js"></script>
 </body>
 
 </html>

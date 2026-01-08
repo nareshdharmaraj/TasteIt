@@ -151,6 +151,18 @@
             display: none;
         }
 
+        /* Scale to Fit Wrapper */
+        .auth-container {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            transform-origin: top left;
+        }
+
+        [dir="rtl"] .auth-container {
+            transform-origin: top right;
+        }
+
         .form-group {
             margin-bottom: var(--spacing-lg);
         }
@@ -692,9 +704,7 @@
 
         <!-- Right Side - Login Form -->
         <div class="auth-form-container">
-            <button id="themeToggle" class="theme-toggle-auth" aria-label="Toggle theme">
-                <span class="theme-toggle-slider-auth"></span>
-            </button>
+            <!-- Theme toggle removed -->
 
             <button id="rtlToggle" class="rtl-toggle-auth" aria-label="Toggle RTL" style="color: var(--text-primary);">
                 <i class="fas fa-globe"></i>
@@ -794,11 +804,50 @@
             }
         }
 
-        // Theme Toggle
-        document.getElementById('themeToggle').addEventListener('click', () => {
-            document.body.classList.toggle('dark');
-            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
-        });
+        // Scale to Fit Logic
+        function scaleToFit() {
+            const container = document.querySelector('.auth-container');
+            const targetWidth = 1920; // Design base width
+            const targetHeight = 1080; // Design base height (optional usage)
+
+            // Current viewport dimensions
+            const availableWidth = window.innerWidth;
+            const availableHeight = window.innerHeight;
+
+            // Simple scale logic: fit height mostly to avoid scrolling
+            // Check if content overflows height
+            // We want to force it to fit in availableHeight
+
+            // Reset for calculation
+            container.style.transform = 'scale(1)';
+            container.style.width = '100%';
+            container.style.height = '100vh';
+
+            // However, we want the content to scale down if it would scroll
+            // Since the design is flex 100vh, it should fit unless screen is very small
+            // We can scale the body's font-size or zoom, or use a transform on the main container
+
+            // Better approach for "shrink to fit":
+            // 1. Measure the natural height needed by contents (or assume 800-900px min)
+            // 2. If availableHeight < natural height, scale down.
+
+            const minHeight = 700; // px
+            if (availableHeight < minHeight) {
+                const scale = availableHeight / minHeight;
+                container.style.transform = `scale(${scale})`;
+                container.style.width = `${100 / scale}%`;
+                container.style.height = `${100 / scale}vh`;
+            } else {
+                container.style.transform = 'scale(1)';
+                container.style.width = '100%';
+                container.style.height = '100vh';
+            }
+        }
+
+        window.addEventListener('resize', scaleToFit);
+        window.addEventListener('load', scaleToFit);
+
+        // Theme Toggle Removed
 
         // RTL Toggle
         document.getElementById('rtlToggle').addEventListener('click', () => {
