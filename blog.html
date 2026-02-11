@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - TasteIT</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🍴%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Mobile Menu Behavior */
@@ -52,8 +55,9 @@
         .blog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: var(--spacing-2xl);
+            gap: var(--spacing-3xl);
             margin-top: var(--spacing-2xl);
+            align-items: stretch;
         }
 
         .blog-card {
@@ -62,6 +66,8 @@
             overflow: hidden;
             box-shadow: var(--shadow-lg);
             transition: all var(--transition-base);
+            display: flex;
+            flex-direction: column;
         }
 
         .blog-card:hover {
@@ -77,6 +83,14 @@
 
         .blog-content {
             padding: var(--spacing-xl);
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .blog-content .btn {
+            margin-top: auto;
+            width: fit-content;
         }
 
         .blog-meta {

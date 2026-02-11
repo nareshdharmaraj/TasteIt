@@ -8,6 +8,9 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🍴%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -68,7 +71,7 @@
         }
 
         .menu-section {
-            padding: var(--spacing-3xl) 0;
+            padding: var(--spacing-4xl) 0;
             background: var(--bg-primary);
         }
 
@@ -102,8 +105,9 @@
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: var(--spacing-2xl);
-            margin-bottom: var(--spacing-4xl);
+            gap: var(--spacing-3xl);
+            margin-bottom: var(--spacing-5xl);
+            align-items: stretch;
         }
 
         .menu-card {
@@ -113,6 +117,8 @@
             box-shadow: var(--shadow-lg);
             transition: all var(--transition-base);
             border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
         }
 
         .menu-card:hover {
@@ -143,6 +149,10 @@
         .menu-card-body {
             padding: var(--spacing-lg);
             position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            flex: 1;
         }
 
         .menu-card-header {
@@ -207,6 +217,7 @@
             align-items: center;
             justify-content: center;
             gap: var(--spacing-sm);
+            margin-top: auto;
         }
 
         .btn-add-cart:hover {
@@ -377,8 +388,7 @@
     </section>
 
     <!-- Filter Section -->
-    <section
-        style="background: var(--bg-secondary); padding: var(--spacing-xl) 0; position: sticky; top: 80px; z-index: 100; box-shadow: var(--shadow-md);">
+    <section style="background: var(--bg-secondary); padding: var(--spacing-xl) 0; box-shadow: var(--shadow-sm);">
         <div class="container">
             <!-- Mobile Filter Toggle Button -->
             <button class="filter-toggle-btn" id="filterToggleBtn" onclick="toggleFilters()">
